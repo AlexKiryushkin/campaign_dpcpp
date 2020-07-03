@@ -1,0 +1,17 @@
+[
+    {
+        "file":"dummy.cpp",
+        "command":"ClCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"dummy.cpp\"",
+        "directory":"D:/dev/campaign_dpcpp/k_means"
+    },
+    {
+        "file":"kmeansGPU.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"kmeansGPU.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/k_means"
+    },
+    {
+        "file":"main.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"main.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/k_means"
+    }
+]

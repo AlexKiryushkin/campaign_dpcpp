@@ -1,0 +1,17 @@
+[
+    {
+        "file":"hierarchicalGPU.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"hierarchicalGPU.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/hierarchial"
+    },
+    {
+        "file":"kernel.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"kernel.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/hierarchial"
+    },
+    {
+        "file":"min.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"min.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/hierarchial"
+    }
+]

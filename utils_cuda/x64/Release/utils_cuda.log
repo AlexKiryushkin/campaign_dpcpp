@@ -1,0 +1,8 @@
+﻿  dataio.cpp
+  defaults.cpp
+  gpudevices.cpp
+  timing.cpp
+  tokens.cpp
+D:\dev\campaign_dpcpp\utils_cuda\tokens.cpp(231,28): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+D:\dev\campaign_dpcpp\utils_cuda\tokens.cpp(236,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  utils_cuda.vcxproj -> D:\dev\campaign_dpcpp\x64\Release\utils_cuda.lib

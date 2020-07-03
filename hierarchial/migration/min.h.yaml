@@ -1,0 +1,20 @@
+---
+MainSourceFile:  'd:\dev\campaign_dpcpp\hierarchial\migration\min.h'
+Replacements:
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\min.h'
+    Offset:          0
+    Length:          0
+    ReplacementText: '#include <CL/sycl.hpp>
+#include <dpct/dpct.hpp>
+'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\min.h'
+    Offset:          3100
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\min.h'
+    Offset:          3219
+    Length:          0
+    ReplacementText: ',
+         sycl::nd_item<3> item_ct1,
+         uint8_t *dpct_local'
+...

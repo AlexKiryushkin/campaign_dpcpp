@@ -1,0 +1,12 @@
+[
+    {
+        "file":"kcentersGPU.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"kcentersGPU.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/kcenters"
+    },
+    {
+        "file":"kernel.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"kernel.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/kcenters"
+    }
+]

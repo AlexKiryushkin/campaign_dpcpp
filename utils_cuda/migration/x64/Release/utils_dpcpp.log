@@ -1,0 +1,34 @@
+﻿dataio.cpp.dp.cpp(369,16): : warning : result of comparison against a string literal is unspecified (use an explicit string comparison function instead) [-Wstring-compare]
+    if (fileName == "") data = ip->readStdIn();
+                 ^  ~~
+  1 warning generated.
+dataio.cpp.dp.cpp(369,16): : warning : result of comparison against a string literal is unspecified (use an explicit string comparison function instead) [-Wstring-compare]
+    if (fileName == "") data = ip->readStdIn();
+                 ^  ~~
+  1 warning generated.
+dataio.cpp.dp.cpp(369,16): : warning : result of comparison against a string literal is unspecified (use an explicit string comparison function instead) [-Wstring-compare]
+    if (fileName == "") data = ip->readStdIn();
+                 ^  ~~
+  1 warning generated.
+timing.cpp.dp.cpp(63,8): : warning : unused variable 'startMap_timerName_ct1' [-Wunused-variable]
+    auto startMap_timerName_ct1 = clock();
+         ^
+timing.cpp.dp.cpp(77,8): : warning : unused variable 'stopMap_timerName_ct1' [-Wunused-variable]
+    auto stopMap_timerName_ct1 = clock();
+         ^
+  2 warnings generated.
+timing.cpp.dp.cpp(63,8): : warning : unused variable 'startMap_timerName_ct1' [-Wunused-variable]
+    auto startMap_timerName_ct1 = clock();
+         ^
+timing.cpp.dp.cpp(77,8): : warning : unused variable 'stopMap_timerName_ct1' [-Wunused-variable]
+    auto stopMap_timerName_ct1 = clock();
+         ^
+  2 warnings generated.
+timing.cpp.dp.cpp(63,8): : warning : unused variable 'startMap_timerName_ct1' [-Wunused-variable]
+    auto startMap_timerName_ct1 = clock();
+         ^
+timing.cpp.dp.cpp(77,8): : warning : unused variable 'stopMap_timerName_ct1' [-Wunused-variable]
+    auto stopMap_timerName_ct1 = clock();
+         ^
+  2 warnings generated.
+  utils_dpcpp.vcxproj -> D:\dev\campaign_dpcpp\x64\Release\utils_dpcpp.lib

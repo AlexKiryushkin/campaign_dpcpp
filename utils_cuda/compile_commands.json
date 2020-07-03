@@ -1,0 +1,27 @@
+[
+    {
+        "file":"dataio.cpp",
+        "command":"ClCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"dataio.cpp\"",
+        "directory":"D:/dev/campaign_dpcpp/utils_cuda"
+    },
+    {
+        "file":"defaults.cpp",
+        "command":"ClCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"defaults.cpp\"",
+        "directory":"D:/dev/campaign_dpcpp/utils_cuda"
+    },
+    {
+        "file":"gpudevices.cpp",
+        "command":"ClCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"gpudevices.cpp\"",
+        "directory":"D:/dev/campaign_dpcpp/utils_cuda"
+    },
+    {
+        "file":"timing.cpp",
+        "command":"ClCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"timing.cpp\"",
+        "directory":"D:/dev/campaign_dpcpp/utils_cuda"
+    },
+    {
+        "file":"tokens.cpp",
+        "command":"ClCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"tokens.cpp\"",
+        "directory":"D:/dev/campaign_dpcpp/utils_cuda"
+    }
+]

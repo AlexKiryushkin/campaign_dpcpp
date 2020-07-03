@@ -1,0 +1,9 @@
+C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\bin\dpct.exe  --in-root="D:\dev\campaign_dpcpp\hierarchial" --vcxprojfile="D:\dev\campaign_dpcpp\hierarchial\hierarchial.vcxproj" --out-root="D:\dev\campaign_dpcpp\hierarchial\migration"
+Save out new version d:\dev\campaign_dpcpp\hierarchial\migration\hierarchicalgpu.h.yaml file
+Save out new version d:\dev\campaign_dpcpp\hierarchial\migration\min.h.yaml file
+
+Processing: D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.cu
+Processing: D:\dev\campaign_dpcpp\hierarchial\kernel.cu
+Processing: D:\dev\campaign_dpcpp\hierarchial\min.cu
+
+

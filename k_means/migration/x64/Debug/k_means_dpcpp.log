@@ -1,0 +1,62 @@
+﻿kmeansGPU.dp.cpp(47,10): : warning : non-portable path to file '"kmeansgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "kmeansGPU.h"
+           ^~~~~~~~~~~~~
+           "kmeansgpu.h"
+  1 warning generated.
+kmeansGPU.dp.cpp(47,10): : warning : non-portable path to file '"kmeansgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "kmeansGPU.h"
+           ^~~~~~~~~~~~~
+           "kmeansgpu.h"
+  1 warning generated.
+kmeansGPU.dp.cpp(47,10): : warning : non-portable path to file '"kmeansgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "kmeansGPU.h"
+           ^~~~~~~~~~~~~
+           "kmeansgpu.h"
+  1 warning generated.
+main.dp.cpp(48,10): : warning : non-portable path to file '"kmeansgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "kmeansGPU.h"
+           ^~~~~~~~~~~~~
+           "kmeansgpu.h"
+  In file included from main.dp.cpp:48:
+./kmeansGPU.h(112,13): : warning : unused function 'assignToClusters_KMCUDA' [-Wunused-function]
+  static void assignToClusters_KMCUDA(int N, int K, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN,
+              ^
+./kmeansGPU.h(129,13): : warning : unused function 'calcScore_CUDA' [-Wunused-function]
+  static void calcScore_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN, FLOAT_TYPE* SCORE,
+              ^
+./kmeansGPU.h(145,13): : warning : unused function 'calcCentroids_CUDA' [-Wunused-function]
+  static void calcCentroids_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN,
+              ^
+  4 warnings generated.
+main.dp.cpp(48,10): : warning : non-portable path to file '"kmeansgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "kmeansGPU.h"
+           ^~~~~~~~~~~~~
+           "kmeansgpu.h"
+  In file included from main.dp.cpp:48:
+./kmeansGPU.h(112,13): : warning : unused function 'assignToClusters_KMCUDA' [-Wunused-function]
+  static void assignToClusters_KMCUDA(int N, int K, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN,
+              ^
+./kmeansGPU.h(129,13): : warning : unused function 'calcScore_CUDA' [-Wunused-function]
+  static void calcScore_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN, FLOAT_TYPE* SCORE,
+              ^
+./kmeansGPU.h(145,13): : warning : unused function 'calcCentroids_CUDA' [-Wunused-function]
+  static void calcCentroids_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN,
+              ^
+  4 warnings generated.
+main.dp.cpp(48,10): : warning : non-portable path to file '"kmeansgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "kmeansGPU.h"
+           ^~~~~~~~~~~~~
+           "kmeansgpu.h"
+  In file included from main.dp.cpp:48:
+./kmeansGPU.h(112,13): : warning : unused function 'assignToClusters_KMCUDA' [-Wunused-function]
+  static void assignToClusters_KMCUDA(int N, int K, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN,
+              ^
+./kmeansGPU.h(129,13): : warning : unused function 'calcScore_CUDA' [-Wunused-function]
+  static void calcScore_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN, FLOAT_TYPE* SCORE,
+              ^
+./kmeansGPU.h(145,13): : warning : unused function 'calcCentroids_CUDA' [-Wunused-function]
+  static void calcCentroids_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN,
+              ^
+  4 warnings generated.
+a-68bfbf.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE_SIZE__syc' sections found with different attributes (40100040)
+a-68bfbf.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE__sycl-spi' sections found with different attributes (40500040)

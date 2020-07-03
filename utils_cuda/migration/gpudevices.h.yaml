@@ -1,0 +1,26 @@
+---
+MainSourceFile:  'd:\dev\campaign_dpcpp\utils_cuda\migration\gpudevices.h'
+Replacements:
+  - FilePath:        'D:\dev\campaign_dpcpp\utils_cuda\gpudevices.h'
+    Offset:          2526
+    Length:          0
+    ReplacementText: '#include <CL/sycl.hpp>
+#include <dpct/dpct.hpp>
+'
+  - FilePath:        'D:\dev\campaign_dpcpp\utils_cuda\gpudevices.h'
+    Offset:          2545
+    Length:          27
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\utils_cuda\gpudevices.h'
+    Offset:          2572
+    Length:          39
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\utils_cuda\gpudevices.h'
+    Offset:          3564
+    Length:          15
+    ReplacementText: 'dpct::device_info *'
+  - FilePath:        'D:\dev\campaign_dpcpp\utils_cuda\gpudevices.h'
+    Offset:          5984
+    Length:          15
+    ReplacementText: 'dpct::device_info *'
+...

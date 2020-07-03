@@ -1,0 +1,10 @@
+C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\bin\dpct.exe  --in-root="D:\dev\campaign_dpcpp\k_means" --vcxprojfile="D:\dev\campaign_dpcpp\k_means\k_means.vcxproj" --out-root="D:\dev\campaign_dpcpp\k_means\migration"
+Save out new version d:\dev\campaign_dpcpp\k_means\migration\kmeansgpu.h.yaml file
+
+Cannot evaluate variable in  "-I\"$(CudaToolkitIncludeDir)\" "
+Cannot evaluate variable in  "-I\"$(SolutionDir)\" "
+Processing: D:\dev\campaign_dpcpp\k_means\kmeansGPU.cu
+Processing: D:\dev\campaign_dpcpp\k_means\main.cu
+Processing: D:\dev\campaign_dpcpp\k_means\dummy.cpp
+
+

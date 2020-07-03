@@ -1,0 +1,3 @@
+﻿a-149323.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE_SIZE__syc' sections found with different attributes (40100040)
+a-149323.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE__sycl-spi' sections found with different attributes (40500040)
+  k_centers_dpcpp.vcxproj -> D:\dev\campaign_dpcpp\x64\Release\k_centers_dpcpp.exe

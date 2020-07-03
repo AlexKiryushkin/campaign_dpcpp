@@ -1,0 +1,94 @@
+---
+MainSourceFile:  'd:\dev\campaign_dpcpp\hierarchial\migration\hierarchicalgpu.h'
+Replacements:
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          2958
+    Length:          0
+    ReplacementText: '#include <CL/sycl.hpp>
+#include <dpct/dpct.hpp>
+'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          3068
+    Length:          39
+    ReplacementText: '#include "../utils_cuda/metricsGPU.dp.hpp"'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          3742
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          3801
+    Length:          0
+    ReplacementText: ',
+                         sycl::nd_item<3> item_ct1'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          4305
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          4420
+    Length:          0
+    ReplacementText: ',
+                                    sycl::nd_item<3> item_ct1'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          4986
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          5108
+    Length:          0
+    ReplacementText: ',
+              sycl::nd_item<3> item_ct1,
+              uint8_t *dpct_local'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          6043
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          6145
+    Length:          0
+    ReplacementText: ',
+                                        sycl::nd_item<3> item_ct1'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          6873
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          7059
+    Length:          0
+    ReplacementText: ',
+                                        sycl::nd_item<3> item_ct1,
+                                        uint8_t *dpct_local'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          7571
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          8824
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          8948
+    Length:          0
+    ReplacementText: ',
+                             sycl::nd_item<3> item_ct1'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          9523
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          9675
+    Length:          0
+    ReplacementText: ',
+                                                    sycl::nd_item<3> item_ct1,
+                                                    uint8_t *dpct_local'
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          10311
+    Length:          11
+    ReplacementText: ''
+  - FilePath:        'D:\dev\campaign_dpcpp\hierarchial\hierarchicalGPU.h'
+    Offset:          10495
+    Length:          0
+    ReplacementText: ',
+                                                    sycl::nd_item<3> item_ct1,
+                                                    uint8_t *dpct_local'
+...

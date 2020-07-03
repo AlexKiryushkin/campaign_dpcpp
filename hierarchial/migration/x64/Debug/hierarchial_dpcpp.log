@@ -1,0 +1,107 @@
+﻿hierarchicalGPU.dp.cpp(50,10): : warning : non-portable path to file '"hierarchicalgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "hierarchicalGPU.h"
+           ^~~~~~~~~~~~~~~~~~~
+           "hierarchicalgpu.h"
+  1 warning generated.
+hierarchicalGPU.dp.cpp(50,10): : warning : non-portable path to file '"hierarchicalgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "hierarchicalGPU.h"
+           ^~~~~~~~~~~~~~~~~~~
+           "hierarchicalgpu.h"
+  1 warning generated.
+hierarchicalGPU.dp.cpp(50,10): : warning : non-portable path to file '"hierarchicalgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "hierarchicalGPU.h"
+           ^~~~~~~~~~~~~~~~~~~
+           "hierarchicalgpu.h"
+  1 warning generated.
+kernel.dp.cpp(49,10): : warning : non-portable path to file '"hierarchicalgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "hierarchicalGPU.h"
+           ^~~~~~~~~~~~~~~~~~~
+           "hierarchicalgpu.h"
+kernel.dp.cpp(74,7): : warning : unused variable 'K' [-Wunused-variable]
+    int K = data->getNumClusters();
+        ^
+  In file included from kernel.dp.cpp:49:
+./hierarchicalGPU.h(97,13): : warning : unused function 'calcDistanceMatrix_CUDA' [-Wunused-function]
+  static void calcDistanceMatrix_CUDA(int N, int D, FLOAT_TYPE* X, int* NEIGHBOR, FLOAT_TYPE* NEIGHBORDIST,
+              ^
+./hierarchicalGPU.h(138,13): : warning : unused function 'mergeElementsInsertAtA_CUDA' [-Wunused-function]
+  static void mergeElementsInsertAtA_CUDA(int N, int D, int indexA, int indexB, FLOAT_TYPE* X,
+              ^
+./hierarchicalGPU.h(156,13): : warning : unused function 'computeAllDistancesToA_CUDA' [-Wunused-function]
+  static void computeAllDistancesToA_CUDA(int N, int numClust, int D, int indexA, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES,
+              ^
+./hierarchicalGPU.h(171,13): : warning : unused function 'updateElementA_CUDA' [-Wunused-function]
+  static void updateElementA_CUDA(int indexA, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES);
+              ^
+./hierarchicalGPU.h(198,13): : warning : unused function 'moveCluster_CUDA' [-Wunused-function]
+  static void moveCluster_CUDA(int N, int D, int indexB, int indexN, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES,
+              ^
+./hierarchicalGPU.h(213,13): : warning : unused function 'computeDistancesToBForPLargerThanB_CUDA' [-Wunused-function]
+  static void computeDistancesToBForPLargerThanB_CUDA(int N, int D, int indexB, int numElements, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES,
+              ^
+./hierarchicalGPU.h(230,13): : warning : unused function 'recomputeMinDistanceForElementAt_j_CUDA' [-Wunused-function]
+  static void recomputeMinDistanceForElementAt_j_CUDA(int N, int D, int indexJ, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES,
+              ^
+  9 warnings generated.
+kernel.dp.cpp(49,10): : warning : non-portable path to file '"hierarchicalgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "hierarchicalGPU.h"
+           ^~~~~~~~~~~~~~~~~~~
+           "hierarchicalgpu.h"
+kernel.dp.cpp(74,7): : warning : unused variable 'K' [-Wunused-variable]
+    int K = data->getNumClusters();
+        ^
+  In file included from kernel.dp.cpp:49:
+./hierarchicalGPU.h(97,13): : warning : unused function 'calcDistanceMatrix_CUDA' [-Wunused-function]
+  static void calcDistanceMatrix_CUDA(int N, int D, FLOAT_TYPE* X, int* NEIGHBOR, FLOAT_TYPE* NEIGHBORDIST,
+              ^
+./hierarchicalGPU.h(138,13): : warning : unused function 'mergeElementsInsertAtA_CUDA' [-Wunused-function]
+  static void mergeElementsInsertAtA_CUDA(int N, int D, int indexA, int indexB, FLOAT_TYPE* X,
+              ^
+./hierarchicalGPU.h(156,13): : warning : unused function 'computeAllDistancesToA_CUDA' [-Wunused-function]
+  static void computeAllDistancesToA_CUDA(int N, int numClust, int D, int indexA, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES,
+              ^
+./hierarchicalGPU.h(171,13): : warning : unused function 'updateElementA_CUDA' [-Wunused-function]
+  static void updateElementA_CUDA(int indexA, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES);
+              ^
+./hierarchicalGPU.h(198,13): : warning : unused function 'moveCluster_CUDA' [-Wunused-function]
+  static void moveCluster_CUDA(int N, int D, int indexB, int indexN, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES,
+              ^
+./hierarchicalGPU.h(213,13): : warning : unused function 'computeDistancesToBForPLargerThanB_CUDA' [-Wunused-function]
+  static void computeDistancesToBForPLargerThanB_CUDA(int N, int D, int indexB, int numElements, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES,
+              ^
+./hierarchicalGPU.h(230,13): : warning : unused function 'recomputeMinDistanceForElementAt_j_CUDA' [-Wunused-function]
+  static void recomputeMinDistanceForElementAt_j_CUDA(int N, int D, int indexJ, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES,
+              ^
+  9 warnings generated.
+kernel.dp.cpp(49,10): : warning : non-portable path to file '"hierarchicalgpu.h"'; specified path differs in case from file name on disk [-Wnonportable-include-path]
+  #include "hierarchicalGPU.h"
+           ^~~~~~~~~~~~~~~~~~~
+           "hierarchicalgpu.h"
+kernel.dp.cpp(74,7): : warning : unused variable 'K' [-Wunused-variable]
+    int K = data->getNumClusters();
+        ^
+  In file included from kernel.dp.cpp:49:
+./hierarchicalGPU.h(97,13): : warning : unused function 'calcDistanceMatrix_CUDA' [-Wunused-function]
+  static void calcDistanceMatrix_CUDA(int N, int D, FLOAT_TYPE* X, int* NEIGHBOR, FLOAT_TYPE* NEIGHBORDIST,
+              ^
+./hierarchicalGPU.h(138,13): : warning : unused function 'mergeElementsInsertAtA_CUDA' [-Wunused-function]
+  static void mergeElementsInsertAtA_CUDA(int N, int D, int indexA, int indexB, FLOAT_TYPE* X,
+              ^
+./hierarchicalGPU.h(156,13): : warning : unused function 'computeAllDistancesToA_CUDA' [-Wunused-function]
+  static void computeAllDistancesToA_CUDA(int N, int numClust, int D, int indexA, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES,
+              ^
+./hierarchicalGPU.h(171,13): : warning : unused function 'updateElementA_CUDA' [-Wunused-function]
+  static void updateElementA_CUDA(int indexA, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES);
+              ^
+./hierarchicalGPU.h(198,13): : warning : unused function 'moveCluster_CUDA' [-Wunused-function]
+  static void moveCluster_CUDA(int N, int D, int indexB, int indexN, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES,
+              ^
+./hierarchicalGPU.h(213,13): : warning : unused function 'computeDistancesToBForPLargerThanB_CUDA' [-Wunused-function]
+  static void computeDistancesToBForPLargerThanB_CUDA(int N, int D, int indexB, int numElements, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES,
+              ^
+./hierarchicalGPU.h(230,13): : warning : unused function 'recomputeMinDistanceForElementAt_j_CUDA' [-Wunused-function]
+  static void recomputeMinDistanceForElementAt_j_CUDA(int N, int D, int indexJ, FLOAT_TYPE* X, FLOAT_TYPE* DISTS, int* INDICES, FLOAT_TYPE* REDUCED_DISTS, int* REDUCED_INDICES,
+              ^
+  9 warnings generated.
+a-eebe17.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE_SIZE__syc' sections found with different attributes (40100040)
+a-eebe17.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE__sycl-spi' sections found with different attributes (40500040)
