@@ -1,3 +1,0 @@
-﻿a-068f4c.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE_SIZE__syc' sections found with different attributes (40100040)
-a-068f4c.obj : : warning LNK4078: multiple '__CLANG_OFFLOAD_BUNDLE__sycl-spi' sections found with different attributes (40500040)
-  kmedoids_dpcpp.vcxproj -> D:\dev\campaign_dpcpp\x64\Release\kmedoids_dpcpp.exe

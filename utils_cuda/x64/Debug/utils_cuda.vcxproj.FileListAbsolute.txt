@@ -1,4 +1,0 @@
-D:\dev\campaign_dpcpp\x64\Debug\utils_cuda.pdb
-D:\dev\campaign_dpcpp\utils_cuda\x64\Debug\utils_cuda.pdb
-D:\cuda_projects\campaign_dpcpp\x64\Debug\utils_cuda.pdb
-D:\cuda_projects\campaign_dpcpp\utils_cuda\x64\Debug\utils_cuda.pdb
