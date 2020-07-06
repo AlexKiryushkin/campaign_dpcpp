@@ -11,8 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}</ProjectGuid>
-    <RootNamespace>kmedoids</RootNamespace>
+    <ProjectGuid>{1DC33695-77E2-40CF-B33E-91ED52F976B8}</ProjectGuid>
+    <RootNamespace>kcenters</RootNamespace>
+    <ProjectName>k_centers_cuda</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -79,11 +80,11 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CudaCompile Include="kcentersGPU.cu" />
     <CudaCompile Include="kernel.cu" />
-    <CudaCompile Include="kmedoidsGPU.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kmedoidsGPU.h" />
+    <ClInclude Include="kcentersGPU.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

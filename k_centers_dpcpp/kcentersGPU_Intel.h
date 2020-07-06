@@ -57,9 +57,9 @@
 #include <dpct/dpct.hpp>
 #include <iostream>
 #include <cfloat>
-#include "../utils_cuda/migration/dataio.h"
-#include "../utils_cuda/migration/defaults.h"
-#include "../utils_cuda/migration/metricsGPU.dp.hpp"
+#include "../utils_dpcpp/dataio.h"
+#include "../utils_dpcpp/defaults.h"
+#include "../utils_dpcpp/metricsGPU.dp.hpp"
 #endif
 
 

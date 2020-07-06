@@ -43,8 +43,8 @@
 #include <CL/sycl.hpp>
 #include <dpct/dpct.hpp>
 
-#include "../utils_cuda/migration/defaults.h"
-#include "../utils_cuda/migration/dataio.h"
+#include "../utils_dpcpp/defaults.h"
+#include "../utils_dpcpp/dataio.h"
 #include "kcentersGPU_Intel.h"
 
 //using namespace std;

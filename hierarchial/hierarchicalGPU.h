@@ -53,11 +53,11 @@
 
 #include <iostream>
 #include <cfloat>
-#include "../utils_cuda/dataio.h"
-#include "../utils_cuda/timing.h"
-#include "../utils_cuda/metricsGPU.cuh"
-#include "../utils_cuda/defaults.h"
-#include "../utils_cuda/gpudevices.h"
+#include "../utils/dataio.h"
+#include "../utils/timing.h"
+#include "../utils/metricsGPU.cuh"
+#include "../utils/defaults.h"
+#include "../utils/gpudevices.h"
 
 #endif
 

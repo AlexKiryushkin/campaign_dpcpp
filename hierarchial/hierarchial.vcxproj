@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{328B60BF-4893-423A-958F-2A767A885832}</ProjectGuid>
     <RootNamespace>hierarchial</RootNamespace>
+    <ProjectName>hierarchial_cuda</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">

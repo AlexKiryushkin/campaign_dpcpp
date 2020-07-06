@@ -11,17 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hierarchicalGPU.dp.cpp" />
-    <ClCompile Include="kernel.dp.cpp" />
-    <ClCompile Include="min.dp.cpp" />
-    <ClInclude Include="hierarchicalGPU.h" />
-    <ClInclude Include="min.h" />
+    <ClCompile Include="dummy.cpp.dp.cpp" />
+    <ClCompile Include="kmeansGPU.dp.cpp" />
+    <ClCompile Include="main.dp.cpp" />
+    <ClInclude Include="kmeansGPU.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{973a8d57-3056-483e-a011-590b538e05f9}</ProjectGuid>
+    <ProjectGuid>{73ce7d83-5843-4c13-a125-cdbaec91ff2e}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hierarchial_dpcpp</RootNamespace>
+    <RootNamespace>k_means_dpcpp</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,8 +82,8 @@
     <IncludePath>C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Migrated">
-    <FromCUProjectDir>D:\dev\campaign_dpcpp\hierarchial</FromCUProjectDir>
-    <InRootPath>D:\dev\campaign_dpcpp\hierarchial</InRootPath>
+    <FromCUProjectDir>D:\dev\campaign_dpcpp\k_means</FromCUProjectDir>
+    <InRootPath>D:\dev\campaign_dpcpp\k_means</InRootPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -108,13 +107,13 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PreprocessorDefinitions>WIN32;WIN64;;_CONSOLE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SYCLOptimization>Disabled</SYCLOptimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)utils_cuda\migration;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)utils_dpcpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>utils_dpcpp.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>utils_dpcpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,14 +136,14 @@
       </PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)utils_cuda\migration;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)utils_dpcpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>utils_dpcpp.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

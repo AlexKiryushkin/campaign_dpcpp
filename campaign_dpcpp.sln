@@ -3,49 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils_cuda", "utils_cuda\utils_cuda.vcxproj", "{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_means", "k_means\k_means.vcxproj", "{CD443F73-CEE6-4B60-92C4-977E43768E06}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils_dpcpp", "utils_cuda\migration\utils_dpcpp.vcxproj", "{657E84F6-2F18-4F05-A44A-8924C0DD38F5}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_means_dpcpp", "k_means\migration\k_means_dpcpp.vcxproj", "{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_centers_dpcpp", "k_centers_dpcpp\k_centers_dpcpp.vcxproj", "{96887785-1C58-4089-ABEA-D9AF1CEED748}"
 	ProjectSection(ProjectDependencies) = postProject
 		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kmedoids", "kmedoids\kmedoids.vcxproj", "{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_cuda", "hierarchial\hierarchial.vcxproj", "{328B60BF-4893-423A-958F-2A767A885832}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kmedoids_dpcpp", "kmedoids\migration\kmedoids_dpcpp.vcxproj", "{0349D724-A89F-47BC-9576-0ACC3D147EB3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils_dpcpp", "utils_dpcpp\utils_dpcpp.vcxproj", "{657E84F6-2F18-4F05-A44A-8924C0DD38F5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial", "hierarchial\hierarchial.vcxproj", "{328B60BF-4893-423A-958F-2A767A885832}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_dpcpp", "hierarchical_dpcpp\hierarchial_dpcpp.vcxproj", "{973A8D57-3056-483E-A011-590B538E05F9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_dpcpp", "hierarchial\migration\hierarchial_dpcpp.vcxproj", "{973A8D57-3056-483E-A011-590B538E05F9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_means_dpcpp", "k_means_dpcpp\k_means_dpcpp.vcxproj", "{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kcenters", "kcenters\kcenters.vcxproj", "{1DC33695-77E2-40CF-B33E-91ED52F976B8}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_centers_cuda", "k_centers_cuda\kcenters.vcxproj", "{1DC33695-77E2-40CF-B33E-91ED52F976B8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_means_cuda", "k_means_cuda\k_means.vcxproj", "{CD443F73-CEE6-4B60-92C4-977E43768E06}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_medoids_cuda", "k_medoids_cuda\kmedoids.vcxproj", "{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils", "utils\utils_cuda.vcxproj", "{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kmedoids_dpcpp", "k_medoids_dpcpp\kmedoids_dpcpp.vcxproj", "{0349D724-A89F-47BC-9576-0ACC3D147EB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,46 +35,46 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Debug|x64.ActiveCfg = Debug|x64
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Debug|x64.Build.0 = Debug|x64
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Release|x64.ActiveCfg = Release|x64
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Release|x64.Build.0 = Release|x64
-		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Debug|x64.ActiveCfg = Debug|x64
-		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Debug|x64.Build.0 = Debug|x64
-		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Release|x64.ActiveCfg = Release|x64
-		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Release|x64.Build.0 = Release|x64
-		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Debug|x64.ActiveCfg = Debug|x64
-		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Debug|x64.Build.0 = Debug|x64
-		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Release|x64.ActiveCfg = Release|x64
-		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Release|x64.Build.0 = Release|x64
-		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Debug|x64.ActiveCfg = Debug|x64
-		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Debug|x64.Build.0 = Debug|x64
-		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Release|x64.ActiveCfg = Release|x64
-		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Release|x64.Build.0 = Release|x64
 		{96887785-1C58-4089-ABEA-D9AF1CEED748}.Debug|x64.ActiveCfg = Debug|x64
 		{96887785-1C58-4089-ABEA-D9AF1CEED748}.Debug|x64.Build.0 = Debug|x64
 		{96887785-1C58-4089-ABEA-D9AF1CEED748}.Release|x64.ActiveCfg = Release|x64
 		{96887785-1C58-4089-ABEA-D9AF1CEED748}.Release|x64.Build.0 = Release|x64
-		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Debug|x64.ActiveCfg = Debug|x64
-		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Debug|x64.Build.0 = Debug|x64
-		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Release|x64.ActiveCfg = Release|x64
-		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Release|x64.Build.0 = Release|x64
-		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Debug|x64.ActiveCfg = Debug|x64
-		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Debug|x64.Build.0 = Debug|x64
-		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Release|x64.ActiveCfg = Release|x64
-		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Release|x64.Build.0 = Release|x64
 		{328B60BF-4893-423A-958F-2A767A885832}.Debug|x64.ActiveCfg = Debug|x64
 		{328B60BF-4893-423A-958F-2A767A885832}.Debug|x64.Build.0 = Debug|x64
 		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.ActiveCfg = Release|x64
 		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.Build.0 = Release|x64
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Debug|x64.ActiveCfg = Debug|x64
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Debug|x64.Build.0 = Debug|x64
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Release|x64.ActiveCfg = Release|x64
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Release|x64.Build.0 = Release|x64
 		{973A8D57-3056-483E-A011-590B538E05F9}.Debug|x64.ActiveCfg = Debug|x64
 		{973A8D57-3056-483E-A011-590B538E05F9}.Debug|x64.Build.0 = Debug|x64
 		{973A8D57-3056-483E-A011-590B538E05F9}.Release|x64.ActiveCfg = Release|x64
 		{973A8D57-3056-483E-A011-590B538E05F9}.Release|x64.Build.0 = Release|x64
+		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Debug|x64.ActiveCfg = Debug|x64
+		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Debug|x64.Build.0 = Debug|x64
+		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Release|x64.ActiveCfg = Release|x64
+		{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}.Release|x64.Build.0 = Release|x64
 		{1DC33695-77E2-40CF-B33E-91ED52F976B8}.Debug|x64.ActiveCfg = Debug|x64
 		{1DC33695-77E2-40CF-B33E-91ED52F976B8}.Debug|x64.Build.0 = Debug|x64
 		{1DC33695-77E2-40CF-B33E-91ED52F976B8}.Release|x64.ActiveCfg = Release|x64
 		{1DC33695-77E2-40CF-B33E-91ED52F976B8}.Release|x64.Build.0 = Release|x64
+		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Debug|x64.ActiveCfg = Debug|x64
+		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Debug|x64.Build.0 = Debug|x64
+		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Release|x64.ActiveCfg = Release|x64
+		{CD443F73-CEE6-4B60-92C4-977E43768E06}.Release|x64.Build.0 = Release|x64
+		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Debug|x64.ActiveCfg = Debug|x64
+		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Debug|x64.Build.0 = Debug|x64
+		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Release|x64.ActiveCfg = Release|x64
+		{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}.Release|x64.Build.0 = Release|x64
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Debug|x64.ActiveCfg = Debug|x64
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Debug|x64.Build.0 = Debug|x64
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Release|x64.ActiveCfg = Release|x64
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}.Release|x64.Build.0 = Release|x64
+		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Debug|x64.ActiveCfg = Debug|x64
+		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Debug|x64.Build.0 = Debug|x64
+		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Release|x64.ActiveCfg = Release|x64
+		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
