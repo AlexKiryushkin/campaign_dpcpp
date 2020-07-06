@@ -8,11 +8,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_centers_dpcpp", "k_center
 		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_cuda", "hierarchial\hierarchial.vcxproj", "{328B60BF-4893-423A-958F-2A767A885832}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils_dpcpp", "utils_dpcpp\utils_dpcpp.vcxproj", "{657E84F6-2F18-4F05-A44A-8924C0DD38F5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_dpcpp", "hierarchical_dpcpp\hierarchial_dpcpp.vcxproj", "{973A8D57-3056-483E-A011-590B538E05F9}"
@@ -27,7 +22,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_medoids_cuda", "k_medoids
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils", "utils\utils_cuda.vcxproj", "{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kmedoids_dpcpp", "k_medoids_dpcpp\kmedoids_dpcpp.vcxproj", "{0349D724-A89F-47BC-9576-0ACC3D147EB3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_medoids_dpcpp", "k_medoids_dpcpp\kmedoids_dpcpp.vcxproj", "{0349D724-A89F-47BC-9576-0ACC3D147EB3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_cuda", "hierarchial_cuda\hierarchial.vcxproj", "{328B60BF-4893-423A-958F-2A767A885832}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +36,6 @@ Global
 		{96887785-1C58-4089-ABEA-D9AF1CEED748}.Debug|x64.Build.0 = Debug|x64
 		{96887785-1C58-4089-ABEA-D9AF1CEED748}.Release|x64.ActiveCfg = Release|x64
 		{96887785-1C58-4089-ABEA-D9AF1CEED748}.Release|x64.Build.0 = Release|x64
-		{328B60BF-4893-423A-958F-2A767A885832}.Debug|x64.ActiveCfg = Debug|x64
-		{328B60BF-4893-423A-958F-2A767A885832}.Debug|x64.Build.0 = Debug|x64
-		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.ActiveCfg = Release|x64
-		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.Build.0 = Release|x64
 		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Debug|x64.ActiveCfg = Debug|x64
 		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Debug|x64.Build.0 = Debug|x64
 		{657E84F6-2F18-4F05-A44A-8924C0DD38F5}.Release|x64.ActiveCfg = Release|x64
@@ -75,6 +68,10 @@ Global
 		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Debug|x64.Build.0 = Debug|x64
 		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Release|x64.ActiveCfg = Release|x64
 		{0349D724-A89F-47BC-9576-0ACC3D147EB3}.Release|x64.Build.0 = Release|x64
+		{328B60BF-4893-423A-958F-2A767A885832}.Debug|x64.ActiveCfg = Debug|x64
+		{328B60BF-4893-423A-958F-2A767A885832}.Debug|x64.Build.0 = Debug|x64
+		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.ActiveCfg = Release|x64
+		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
