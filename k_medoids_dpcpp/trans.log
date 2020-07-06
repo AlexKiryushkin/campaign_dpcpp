@@ -1,7 +1,0 @@
-C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\bin\dpct.exe  --in-root="D:\dev\campaign_dpcpp\kmedoids" --vcxprojfile="D:\dev\campaign_dpcpp\kmedoids\kmedoids.vcxproj" --out-root="D:\dev\campaign_dpcpp\kmedoids\migration"
-Save out new version d:\dev\campaign_dpcpp\kmedoids\migration\kmedoidsgpu.h.yaml file
-
-Processing: D:\dev\campaign_dpcpp\kmedoids\kmedoidsGPU.cu
-Processing: D:\dev\campaign_dpcpp\kmedoids\kernel.cu
-
-
