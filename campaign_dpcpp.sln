@@ -59,7 +59,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kpsmeans_cuda", "kpsmeans_c
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rmsd_dpcpp", "rmsd_dpcpp\rmsd_dpcpp.vcxproj", "{038B5905-CAAD-4E48-90E5-2187663CE700}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kps_means_dpcpp", "kps_means_dpcpp\kps_means_dpcpp.vcxproj", "{9166A022-8976-4534-B03F-4D1D4DD235BA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kpsmeans_dpcpp", "kpsmeans_dpcpp\kpsmeans_dpcpp.vcxproj", "{9166A022-8976-4534-B03F-4D1D4DD235BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
