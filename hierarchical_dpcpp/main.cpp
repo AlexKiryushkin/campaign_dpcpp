@@ -31,7 +31,7 @@
  /* $Id$ */
 
  /**
-  * \file hierarchicalGPU.cc
+  * \file hierarchical_gpu.cc
   * \brief Test/example file for hierarchical clustering on the GPU
   *
   * Test/example file for hierarchical clustering on the GPU
@@ -46,7 +46,7 @@
 #include "../config.h"
 #include "../campaign.h"
 #else
-#include "hierarchicalGPU.h"
+#include "hierarchical_gpu.h"
 #endif
 
 
@@ -63,7 +63,6 @@ int main(int argc, const char* argv[])
 
   // select CUDA device based on command-line switches
   GpuDevices* systemGpuDevices = new GpuDevices(defaults);
-
 
   // get data and information about data from datafile
   DataIO* data = new DataIO;
@@ -127,6 +126,7 @@ int main(int argc, const char* argv[])
   // free memory
   free(data);
   free(x);
+  free(systemGpuDevices);
 
   // done
   cout << "Done clustering" << endl;

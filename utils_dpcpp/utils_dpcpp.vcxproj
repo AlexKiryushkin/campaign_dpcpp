@@ -19,8 +19,8 @@
     <ClInclude Include="dataio.h" />
     <ClInclude Include="defaults.h" />
     <ClInclude Include="gpudevices.h" />
-    <ClInclude Include="metricsCPU.h" />
-    <ClInclude Include="metricsGPU.dp.hpp" />
+    <ClInclude Include="metrics_cpu.h" />
+    <ClInclude Include="metrics_gpu.dp.hpp" />
     <ClInclude Include="timing.h" />
     <ClInclude Include="tokens.h" />
   </ItemGroup>
@@ -81,14 +81,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ONEAPI_ROOT)dpcpp-ct\latest\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ONEAPI_ROOT)dpcpp-ct\latest\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Migrated">
     <FromCUProjectDir>D:\dev\campaign_dpcpp\utils_cuda</FromCUProjectDir>

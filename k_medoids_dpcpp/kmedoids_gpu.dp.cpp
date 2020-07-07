@@ -30,7 +30,7 @@
 
 /* $Id$ */
 /**
- * \File kmedoidsGPU.cu
+ * \File kmedoids_gpu.cu
  * \brief A CUDA K-medoids implementation with all-prefix sorting
  *
  * A module of the CAMPAIGN data clustering library for parallel architectures
@@ -44,7 +44,7 @@
 
 #include <CL/sycl.hpp>
 #include <dpct/dpct.hpp>
-#include "./kmedoidsGPU.h"
+#include "kmedoids_gpu.h"
 #include <cmath>
 
 using namespace std;

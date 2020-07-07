@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hierarchicalGPU.dp.cpp" />
-    <ClCompile Include="kernel.dp.cpp" />
+    <ClCompile Include="hierarchical_gpu.dp.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="min.dp.cpp" />
-    <ClInclude Include="hierarchicalGPU.h" />
+    <ClInclude Include="hierarchical_gpu.h" />
     <ClInclude Include="min.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -73,14 +73,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ONEAPI_ROOT)dpcpp-ct\latest\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ONEAPI_ROOT)dpcpp-ct\latest\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Migrated">
     <FromCUProjectDir>D:\dev\campaign_dpcpp\hierarchial</FromCUProjectDir>

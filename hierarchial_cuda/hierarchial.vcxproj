@@ -80,12 +80,12 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="hierarchicalGPU.cu" />
-    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="hierarchical_gpu.cu" />
+    <CudaCompile Include="main.cu" />
     <CudaCompile Include="min.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hierarchicalGPU.h" />
+    <ClInclude Include="hierarchical_gpu.h" />
     <ClInclude Include="min.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

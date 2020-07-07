@@ -31,7 +31,7 @@
 /* $Id$ */
 
 /**
- * \File kmeansGPU.cu
+ * \File kmeans_gpu.cu
  * \brief A basic CUDA K-means implementation
  *
  * A module of the CAMPAIGN data clustering library for parallel architectures
@@ -44,7 +44,7 @@
 
 #include <CL/sycl.hpp>
 #include <dpct/dpct.hpp>
-#include "kmeansGPU.h"
+#include "kmeans_gpu.h"
 #include <cmath>
 
 using namespace std;

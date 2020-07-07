@@ -31,7 +31,7 @@
 /* $Id$ */
 
 /**
- * \file hierarchicalGPU.cu
+ * \file hierarchical_gpu.cu
  * \brief A CUDA hierarchical clustering implementation
  *
  * Implements hierarchical clustering on the GPU
@@ -47,7 +47,7 @@
 #else
 #include <CL/sycl.hpp>
 #include <dpct/dpct.hpp>
-#include "hierarchicalGPU.h"
+#include "hierarchical_gpu.h"
 #include <cmath>
 
 #endif

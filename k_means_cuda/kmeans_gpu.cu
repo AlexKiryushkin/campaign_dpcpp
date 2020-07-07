@@ -31,7 +31,7 @@
 /* $Id$ */
 
 /**
- * \File kmeansGPU.cu
+ * \File kmeans_gpu.cu
  * \brief A basic CUDA K-means implementation
  *
  * A module of the CAMPAIGN data clustering library for parallel architectures
@@ -42,7 +42,7 @@
  * \version 1.0
  **/
 
-#include "kmeansGPU.h"
+#include "kmeans_gpu.h"
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
@@ -59,12 +59,12 @@ __device__ static void reduceOne(int tid, T *s_A)
     
     if (tid < 32)
     {
-        if (BLOCKSIZE >= 64) { s_A[tid] += s_A[tid + 32]; }
-        if (BLOCKSIZE >= 32) { s_A[tid] += s_A[tid + 16]; }
-        if (BLOCKSIZE >= 16) { s_A[tid] += s_A[tid +  8]; }
-        if (BLOCKSIZE >=  8) { s_A[tid] += s_A[tid +  4]; }
-        if (BLOCKSIZE >=  4) { s_A[tid] += s_A[tid +  2]; }
-        if (BLOCKSIZE >=  2) { s_A[tid] += s_A[tid +  1]; }
+        if (BLOCKSIZE >= 64) { s_A[tid] += s_A[tid + 32]; } __syncthreads();
+        if (BLOCKSIZE >= 32) { s_A[tid] += s_A[tid + 16]; } __syncthreads();
+        if (BLOCKSIZE >= 16) { s_A[tid] += s_A[tid +  8]; } __syncthreads();
+        if (BLOCKSIZE >=  8) { s_A[tid] += s_A[tid +  4]; } __syncthreads();
+        if (BLOCKSIZE >=  4) { s_A[tid] += s_A[tid +  2]; } __syncthreads();
+        if (BLOCKSIZE >=  2) { s_A[tid] += s_A[tid +  1]; } __syncthreads();
     }
 }
 
@@ -79,12 +79,12 @@ __device__ static void reduceTwo(int tid, T *s_A, U *s_B)
     
     if (tid < 32)
     {
-        if (BLOCKSIZE >= 64) { s_A[tid] += s_A[tid + 32]; s_B[tid] += s_B[tid + 32]; }
-        if (BLOCKSIZE >= 32) { s_A[tid] += s_A[tid + 16]; s_B[tid] += s_B[tid + 16]; }
-        if (BLOCKSIZE >= 16) { s_A[tid] += s_A[tid +  8]; s_B[tid] += s_B[tid +  8]; }
-        if (BLOCKSIZE >=  8) { s_A[tid] += s_A[tid +  4]; s_B[tid] += s_B[tid +  4]; }
-        if (BLOCKSIZE >=  4) { s_A[tid] += s_A[tid +  2]; s_B[tid] += s_B[tid +  2]; }
-        if (BLOCKSIZE >=  2) { s_A[tid] += s_A[tid +  1]; s_B[tid] += s_B[tid +  1]; }
+        if (BLOCKSIZE >= 64) { s_A[tid] += s_A[tid + 32]; s_B[tid] += s_B[tid + 32]; } __syncthreads();
+        if (BLOCKSIZE >= 32) { s_A[tid] += s_A[tid + 16]; s_B[tid] += s_B[tid + 16]; } __syncthreads();
+        if (BLOCKSIZE >= 16) { s_A[tid] += s_A[tid +  8]; s_B[tid] += s_B[tid +  8]; } __syncthreads();
+        if (BLOCKSIZE >=  8) { s_A[tid] += s_A[tid +  4]; s_B[tid] += s_B[tid +  4]; } __syncthreads();
+        if (BLOCKSIZE >=  4) { s_A[tid] += s_A[tid +  2]; s_B[tid] += s_B[tid +  2]; } __syncthreads();
+        if (BLOCKSIZE >=  2) { s_A[tid] += s_A[tid +  1]; s_B[tid] += s_B[tid +  1]; } __syncthreads();
     }
 }
 

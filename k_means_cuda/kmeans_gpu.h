@@ -29,94 +29,125 @@
  */
 
  /* $Id$ */
+
  /**
-  * \file kcentersGPU.h
-  * \brief A CUDA K-centers implementation
+  * \File kmeans_gpu.h
+  * \brief A basic CUDA K-means implementation
   *
-  * Implements parallel K-centers clustering on the GPU
+  * A module of the CAMPAIGN data clustering library for parallel architectures
+  * Implements parallel K-means clustering (base implementation) on the GPU
   *
   * \author Author: Kai J. Kohlhoff, Contributors: Marc Sosnick, William Hsu
   * \date 12/2/2010
   * \version 1.0
-  **/
+  */
 
-
-#ifdef HAVE_CONFIG_H
-#include "../config.h"
-#include "../campaign.h"
-#else
+#ifndef HAVE_CONFIG_H
   // defined globally in campaign.h
   // define distance metric, e.g. CAMPAIGN_DISTANCE_MANHATTAN, CAMPAIGN_DISTANCE_EUCLIDEAN_, etc.
 #define CAMPAIGN_DISTANCE_EUCLIDEAN_SQUARED /** < Type of distance metric */
-#define THREADSPERBLOCK 512 /** < Threads per block (tpb) */
+#define THREADSPERBLOCK 16 /** < Threads per block (tpb) */
 #define FLOAT_TYPE float         /** < Precision of floating point numbers */
 
-#undef _GLIBCXX_ATOMIC_BUILTINS
-
 #include <iostream>
-#include <cfloat>
-#include "../utils_cuda/dataio.h"
-#include "../utils_cuda/timing.h"
-#include "../utils_cuda/defaults.h"
-#include "../utils_cuda/metricsGPU.cuh"
-#include "../utils_cuda/gpudevices.h"
+#include "../utils/dataio.h"
+#include "../utils/timing.h"
+#include "../utils/defaults.h"
+#include "../utils/metrics_gpu.cuh"
+#include "../utils/gpudevices.h"
+
+#else
+#include "../config.h"
+#include "../campaign.h"
 #endif
 
+#define EPS 0.01            /** < Value of epsilon for convergence criteria */
+#undef _GLIBCXX_ATOMIC_BUILTINS
 
 using namespace std;
 
 /**
- * \brief Parallel algorithm, finds maximum value in first array and key for that value in second array
+ * \brief Parallel algorithm, reduction (sum of elements) of an array
  * Runtime O(log(BLOCKSIZE)) = O(1)
+ * Works for up to 1024 elements in array
+ * Called from within a kernel, will be inlined
+ *
+ * \param tid Thread ID
+ * \param s_A Array in shared memory
+ * \return Result of reduction in first element of array s_A
+ */
+template <unsigned int BLOCKSIZE, class T>
+__device__ static void reduceOne(int tid, T* s_A);
+
+
+/**
+ * \brief Parallel algorithm, reduction (sum of elements) of two arrays congruently
+ * Runtime O(log(tpb)) = O(1)
  * Works for up to 1024 elements in arrays
  * Called from within a kernel, will be inlined
  *
  * \param tid Thread ID
  * \param s_A Array in shared memory
  * \param s_B Array in shared memory
- * \return Maximum value at first position of s_A and corresponding key at first postion of s_B
+ * \return Result of reduction in first elements of arrays s_A and s_B
  */
 template <unsigned int BLOCKSIZE, class T, class U>
-__device__ static void parallelMax(int tid, T* s_A, U* s_B);
+__device__ static void reduceTwo(int tid, T* s_A, U* s_B);
+
+/**
+ * \brief Assign data points to clusters
+ *
+ * \param N Number of data points
+ * \param K Number of clusters
+ * \param D Number of dimensions
+ * \param X Clustering input data
+ * \param CTR Centroid positions for next iteration
+ * \param ASSIGN Assignments of data points to clusters
+ * \return Updated values of ASSIGN
+ */
+__global__ static void assignToClusters_KMCUDA(int N, int K, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN);
 
 
 /**
- * \brief Checks if data points have to be reassigned to current centroid
- * Runtime O(D*N)
- * Each block of threads processes THREADSPERBLOCK data points
+ * \brief Computes score for current assignment
+ * Runtime O(D*K*N)
  *
  * \param N Number of data points
  * \param D Number of dimensions
- * \param iter Current iteration
- * \param centroid Index of current centroid
- * \param X Array of data point positions
- * \param CTR Coordinates of current centroid
- * \param DIST Distances of data points to their assigned centroids
+ * \param X Clustering input data
+ * \param CTR Centroid positions
  * \param ASSIGN Assignments of data points to clusters
- * \param MAXDIST Maximum distance of a data point to its centroid for each block
- * \param MAXID Index of data point furthes away  from its centroid for each block
- * \return Updated values of DIST, ASSIGN, MAXDIST, and MAXID
- **/
-__global__ void checkCentroid_CUDA(int N, int D, int iter, int centroid, FLOAT_TYPE* X, FLOAT_TYPE* CTR, FLOAT_TYPE* DIST, int* ASSIGN, FLOAT_TYPE* MAXDIST, int* MAXID);
+ * \param SCORE Array to store score components for each block
+ * \return Updated values of SCORE
+ */
+__global__ static void calcScore_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN, FLOAT_TYPE* SCORE);
 
 
 /**
- * \brief Runs k-centers on the GPU. Requires CUDA-enabled graphics processor
- * Note: distances should all be FLT_MAX the first time this method is called
+ * \brief Compute new centroids
  * Runtime O(D*K*N)
+ *
+ * \param N Number of data points
+ * \param D Number of dimensions
+ * \param X Clustering input data
+ * \param CTR Centroid positions
+ * \param ASSIGN Assignments of data points to clusters
+ * \return Updated values of CTR
+ */
+__global__ static void calcCentroids_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int* ASSIGN);
+
+
+/**
+ * \brief Runs K-means on theGPU. Requires CUDA-enabled graphics processor
  *
  * \param N Number of data points
  * \param K Number of clusters
  * \param D Number of dimensions
  * \param x Clustering input data
- * \param assign Initial assignments of data points to clusters
- * \param dist Distances from each data point to centroid, initialize with FLT_MAX
- * \param centroids Indices of centroids
- * \param seed Index of first centroid
- * \return Updated values of assign, dist, and centroid indices in centroids
+ * \param ctr Centroid positions
+ * \param assign Assignments of data points to clusters
+ * \param maxIter Maximum number of iterations
+ * \param data pointer to DataIO object containing data to be clustered
+ * \return Score for clustering after convergence and updated values of ctr and assign
  */
-void kcentersGPU(int N, int K, int D, FLOAT_TYPE* x, int* assign, FLOAT_TYPE* dist, int* centroids, int seed, DataIO* data);
-
-
-
-
+FLOAT_TYPE kmeansGPU(int N, int K, int D, FLOAT_TYPE* x, FLOAT_TYPE* ctr, int* assign, unsigned int maxIter, DataIO* data);

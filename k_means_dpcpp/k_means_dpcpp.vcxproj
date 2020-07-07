@@ -11,10 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dummy.cpp.dp.cpp" />
-    <ClCompile Include="kmeansGPU.dp.cpp" />
-    <ClCompile Include="main.dp.cpp" />
-    <ClInclude Include="kmeansGPU.h" />
+    <ClCompile Include="kmeans_gpu.dp.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClInclude Include="kmeans_gpu.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -72,14 +71,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ONEAPI_ROOT)dpcpp-ct\latest\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\inteloneapi\dpcpp-ct\2021.1-beta06\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ONEAPI_ROOT)dpcpp-ct\latest\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Migrated">
     <FromCUProjectDir>D:\dev\campaign_dpcpp\k_means</FromCUProjectDir>

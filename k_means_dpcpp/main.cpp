@@ -31,13 +31,13 @@
  /* $Id$ */
 
  /**
-  * \File kmedoidsGPU.cc
-  * \brief Test/example file for k-medoids clustering on the GPU
+  * \file kmeans_gpu.cc
+  * \brief Test/example file for k-means clustering on the GPU
   *
-  * Test/example file for k-medoids clustering on the GPU
+  * Test/example file for k-means clustering on the GPU
   *
   * \author Author: Kai J. Kohlhoff, Contributors: Marc Sosnick, William Hsu
-  * \date 15/2/2010
+  * \date 2/2/2010
   * \version 1.0
   **/
 
@@ -45,9 +45,8 @@
 #include "../config.h"
 #include "../campaign.h"
 #else
-#include "kmedoidsGPU.h"
+#include "kmeans_gpu.h"
 #endif
-
 using namespace std;
 
 
@@ -58,46 +57,55 @@ int main(int argc, const char* argv[])
 {
   // Initialization
   Timing timer;
-  srand(2011); // fixed seed for reproducibility
 
   // Parse command line
-  Defaults* defaults = new Defaults(argc, argv, "kmed");
+  Defaults* defaults = new Defaults(argc, argv, "km");
 
-  // select device based on command-line switches
+  // select CUDA device based on command-line switches
   GpuDevices* systemGpuDevices = new GpuDevices(defaults);
-  systemGpuDevices->setCurrentDevice(1);
 
   // get data and information about data from datafile
   DataIO* data = new DataIO;
 
+  FLOAT_TYPE score = 0.0f;
   FLOAT_TYPE* x = data->readData(defaults->getInputFileName().c_str()); // data points
-
   int N = data->getNumElements();
   int K = data->getNumClusters();
   int D = data->getDimensions();
-  int* medoid = (int*)malloc(sizeof(int) * K); // array with medoid indices
-  int* assign = (int*)malloc(sizeof(int) * N); // assignments
 
-  // initialize first set of medoids with first K data points  
-  for (unsigned int k = 0; k < K; k++) medoid[k] = k;
+
+  FLOAT_TYPE* ctr = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * K * D); // array containing centroids
+  memset(ctr, 0, sizeof(FLOAT_TYPE) * K * D);
+  int* assign = (int*)malloc(sizeof(int) * N); // assignments
+  memset(assign, 0, sizeof(int) * N);
+
+  // initialize first centroids with first K data points  
+  // for each cluster
+  for (unsigned int k = 0; k < K; k++)
+  {
+    // for each dimension
+    for (unsigned int d = 0; d < D; d++)
+    {
+
+      ctr[k * D + d] = x[d * N + k];
+    }
+  }
 
   // do clustering on GPU 
-  timer.start("kmedoidsGPU");
-  FLOAT_TYPE score = kmedoidsGPU(N, K, D, x, medoid, assign, 100, data);
-  timer.stop("kmedoidsGPU");
+  timer.start("kmeansGPU");
+  score = kmeansGPU(N, K, D, x, ctr, assign, (unsigned int)0, data);
+  timer.stop("kmeansGPU");
 
   // print results
-  cout << "Final set of medoids: ";
-  for (unsigned int k = 0; k < K; k++) cout << "[" << k << "] " << medoid[k] << "\t";
-  cout << endl;
+  data->printClusters(N, K, D, x, ctr, assign);
   cout << "Score: " << score << endl;
-
-  if (defaults->getTimerOutput()) timer.report();
+  if (defaults->getTimerOutput() == true) timer.report();
 
   // free memory
   free(x);
-  free(medoid);
+  free(ctr);
   free(assign);
+  free(systemGpuDevices);
 
   // done
   cout << "Done clustering" << endl;

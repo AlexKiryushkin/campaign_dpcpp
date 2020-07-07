@@ -80,11 +80,11 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="kernel.cu" />
-    <CudaCompile Include="kmedoidsGPU.cu" />
+    <CudaCompile Include="main.cu" />
+    <CudaCompile Include="kmedoids_gpu.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kmedoidsGPU.h" />
+    <ClInclude Include="kmedoids_gpu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

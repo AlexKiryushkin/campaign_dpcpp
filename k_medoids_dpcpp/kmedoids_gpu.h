@@ -32,7 +32,7 @@
 
  /* $Id$ */
  /**
-  * \File kmedoidsGPU.h
+  * \File kmedoids_gpu.h
   * \brief A CUDA K-medoids implementation with all-prefix sorting
   *
   * A module of the CAMPAIGN data clustering library for parallel architectures
@@ -57,7 +57,7 @@
 #include "dataio.h"
 #include "timing.h"
 #include "defaults.h"
-#include "metricsGPU.dp.hpp"
+#include "metrics_gpu.dp.hpp"
 #include "gpudevices.h"
 #include "dataio.h"
 
@@ -210,7 +210,7 @@ void serialPrefixSum_KMDCUDA(int N, int* INPUT, int* OUTPUT);
 void sortData(int N, int K, int D, FLOAT_TYPE* X, FLOAT_TYPE* X2, int* INDEX, int* INDEX2, int* ASSIGN, int* SEGSIZE, int* SEGOFFSET);
 
 /**
- * \brief Runs K-medoids on the GPU. Requires CUDA-enabled graphics processor
+ * \brief Runs K-medoids on theGPU. Requires CUDA-enabled graphics processor
  *
  * \param N Number of data points
  * \param K Number of clusters

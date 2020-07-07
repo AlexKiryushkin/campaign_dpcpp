@@ -29,74 +29,78 @@
  */
 
  /* $Id$ */
+
  /**
-  * \file kcentersCPU.cc
-  * \brief Test/example file for k-centers clustering on the CPU
+  * \File kmedoids_gpu.cc
+  * \brief Test/example file for k-medoids clustering on the GPU
   *
-  * Test/example file for k-centers clustering on the CPU.
+  * Test/example file for k-medoids clustering on the GPU
   *
   * \author Author: Kai J. Kohlhoff, Contributors: Marc Sosnick, William Hsu
-  * \date 12/2/2010
+  * \date 15/2/2010
   * \version 1.0
   **/
 
-#include <CL/sycl.hpp>
-#include <dpct/dpct.hpp>
+#ifdef HAVE_CONFIG_H
+#include "../config.h"
+#include "../campaign.h"
+#else
+#include "kmedoids_gpu.h"
+#endif
 
-#include "../utils_dpcpp/defaults.h"
-#include "../utils_dpcpp/dataio.h"
-#include "kcentersGPU_Intel.h"
+using namespace std;
 
-//using namespace std;
 
-  /**
-   * \brief Main for testing
-   */
+/**
+ * \brief Main for testing
+ */
 int main(int argc, const char* argv[])
 {
-  Defaults* defaults = new Defaults(argc, argv, "kc");
+  // Initialization
+  Timing timer;
+  srand(2011); // fixed seed for reproducibility
 
-    const int seed = 0;
-    DataIO* data = new DataIO;
+  // Parse command line
+  Defaults* defaults = new Defaults(argc, argv, "kmed");
 
-    float* x = data->readData(defaults->getInputFileName().c_str());
-    int N = data->getNumElements();
-    int K = data->getNumClusters();
-    int D = data->getDimensions();
-    FLOAT_TYPE* dist = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * N); // cluster distances
-    for (int i = 0; i < N; i++) dist[i] = FLT_MAX;
-    int* centroids = (int*)malloc(sizeof(int) * K);  // centroid indices
-    memset(centroids, 0, sizeof(int) * K);
-    int* assign = (int*)malloc(sizeof(int) * N);     // assignments
-    memset(assign, seed, sizeof(int) * N);
+  // select device based on command-line switches
+  GpuDevices* systemGpuDevices = new GpuDevices(defaults);
 
-    dpct::dev_mgr::instance().select_device(2);
+  // get data and information about data from datafile
+  DataIO* data = new DataIO;
 
-    // --> do clustering on CPU 
-    //kcentersCPU(N, K, D, x, assign, dist, centroids, seed);
+  FLOAT_TYPE* x = data->readData(defaults->getInputFileName().c_str()); // data points
 
-    // --> do clustering on GPU
-    kcentersGPU(N, K, D, x, assign, dist, centroids, seed, data);
+  int N = data->getNumElements();
+  int K = data->getNumClusters();
+  int D = data->getDimensions();
+  int* medoid = (int*)malloc(sizeof(int) * K); // array with medoid indices
+  int* assign = (int*)malloc(sizeof(int) * N); // assignments
 
-    // print results
-    FLOAT_TYPE* ctr = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * K * D); // cluster centers
-    // for each centroid
-    for (int i = 0; i < K; i++)
-        // for each dimension
-        for (int d = 0; d < D; d++)
-            // collect centroid coordinates
-            ctr[i * D + d] = x[centroids[i] * D + d];
-    data->printClusters(N, K, D, x, ctr, assign);
-    free(ctr); ctr = NULL;
+  // initialize first set of medoids with first K data points  
+  for (unsigned int k = 0; k < K; k++) medoid[k] = k;
 
-    // free memory
-    free(x);
-    free(dist);
-    free(ctr);
-    free(assign);
+  // do clustering on GPU 
+  timer.start("kmedoidsGPU");
+  FLOAT_TYPE score = kmedoidsGPU(N, K, D, x, medoid, assign, 100, data);
+  timer.stop("kmedoidsGPU");
 
-    // done
-    std::cout << "Done clustering" << std::endl;
+  // print results
+  cout << "Final set of medoids: ";
+  for (unsigned int k = 0; k < K; k++) cout << "[" << k << "] " << medoid[k] << "\t";
+  cout << endl;
+  cout << "Score: " << score << endl;
 
-    return 0;
+  if (defaults->getTimerOutput()) timer.report();
+
+  // free memory
+  free(x);
+  free(medoid);
+  free(assign);
+  free(systemGpuDevices);
+
+  // done
+  cout << "Done clustering" << endl;
+
+  return 0;
 }

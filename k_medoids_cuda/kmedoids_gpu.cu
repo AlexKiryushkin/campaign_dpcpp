@@ -30,7 +30,7 @@
 
 /* $Id$ */
 /**
- * \File kmedoidsGPU.cu
+ * \File kmedoids_gpu.cu
  * \brief A CUDA K-medoids implementation with all-prefix sorting
  *
  * A module of the CAMPAIGN data clustering library for parallel architectures
@@ -42,7 +42,7 @@
  * \version 1.0
  **/
 
-#include "./kmedoidsGPU.h"
+#include "kmedoids_gpu.h"
 
 using namespace std;
 
@@ -66,12 +66,12 @@ __device__ static void reduceOne(int tid, T *s_A)
     
     if (tid < 32)
     {
-        if (BLOCKSIZE >= 64) { s_A[tid] += s_A[tid + 32]; }
-        if (BLOCKSIZE >= 32) { s_A[tid] += s_A[tid + 16]; }
-        if (BLOCKSIZE >= 16) { s_A[tid] += s_A[tid +  8]; }
-        if (BLOCKSIZE >=  8) { s_A[tid] += s_A[tid +  4]; }
-        if (BLOCKSIZE >=  4) { s_A[tid] += s_A[tid +  2]; }
-        if (BLOCKSIZE >=  2) { s_A[tid] += s_A[tid +  1]; }
+        if (BLOCKSIZE >= 64) { s_A[tid] += s_A[tid + 32]; } __syncthreads();
+        if (BLOCKSIZE >= 32) { s_A[tid] += s_A[tid + 16]; } __syncthreads();
+        if (BLOCKSIZE >= 16) { s_A[tid] += s_A[tid +  8]; } __syncthreads();
+        if (BLOCKSIZE >=  8) { s_A[tid] += s_A[tid +  4]; } __syncthreads();
+        if (BLOCKSIZE >=  4) { s_A[tid] += s_A[tid +  2]; } __syncthreads();
+        if (BLOCKSIZE >=  2) { s_A[tid] += s_A[tid +  1]; } __syncthreads();
     }
 }
 
@@ -275,10 +275,15 @@ __device__ static int parallelPrefixSum(int tid, int *DATA)
     if (n >=  128) { if (tid <  64) { DATA[tid] += DATA[tid +  64]; } __syncthreads(); }
     
     if (tid <  32) DATA[tid] += DATA[tid + 32];
+    __syncthreads();
     if (tid <  16) DATA[tid] += DATA[tid + 16];
+    __syncthreads();
     if (tid <   8) DATA[tid] += DATA[tid +  8];
+    __syncthreads();
     if (tid <   4) DATA[tid] += DATA[tid +  4];
+    __syncthreads();
     if (tid <   2) DATA[tid] += DATA[tid +  2];
+    __syncthreads();
     if (tid <   1) DATA[tid] += DATA[tid +  1];
     
     __syncthreads();
@@ -289,10 +294,15 @@ __device__ static int parallelPrefixSum(int tid, int *DATA)
     
     // parallel all-prefix sum using intermediate results from reduction
     if (tid <   1) { temp = DATA[tid]; DATA[tid] += DATA[tid +   1]; DATA[tid +   1] = temp; }
+  __syncthreads();
     if (tid <   2) { temp = DATA[tid]; DATA[tid] += DATA[tid +   2]; DATA[tid +   2] = temp; }
+  __syncthreads();
     if (tid <   4) { temp = DATA[tid]; DATA[tid] += DATA[tid +   4]; DATA[tid +   4] = temp; }
+  __syncthreads();
     if (tid <   8) { temp = DATA[tid]; DATA[tid] += DATA[tid +   8]; DATA[tid +   8] = temp; }
+  __syncthreads();
     if (tid <  16) { temp = DATA[tid]; DATA[tid] += DATA[tid +  16]; DATA[tid +  16] = temp; }
+  __syncthreads();
     if (tid <  32) { temp = DATA[tid]; DATA[tid] += DATA[tid +  32]; DATA[tid +  32] = temp; }
     __syncthreads();
     if (n >=  128) { if (tid <  64) { temp = DATA[tid]; DATA[tid] += DATA[tid +  64]; DATA[tid +  64] = temp; } __syncthreads(); }

@@ -29,86 +29,76 @@
  */
 
  /* $Id$ */
-
  /**
-  * \file kcentersGPU.cc
-  * \brief Test/example file for k-centers clustering on the GPU
+  * \file kcentersCPU.cc
+  * \brief Test/example file for k-centers clustering on the CPU
   *
-  * Test/example file for k-centers clustering on the GPU
+  * Test/example file for k-centers clustering on the CPU.
   *
   * \author Author: Kai J. Kohlhoff, Contributors: Marc Sosnick, William Hsu
-  * \date 2/2/2010
+  * \date 12/2/2010
   * \version 1.0
   **/
 
+#include <CL/sycl.hpp>
+#include <dpct/dpct.hpp>
 
-#ifdef HAVE_CONFIG_H
-#include "../config.h"
-#include "../campaign.h"
-#else
-#include "./kcentersGPU.h"
-#endif
+#include "../utils_dpcpp/defaults.h"
+#include "../utils_dpcpp/dataio.h"
+#include "../utils_dpcpp/gpudevices.h"
+#include "kcenters_gpu.h"
 
-using namespace std;
+//using namespace std;
 
-
-/**
- * \brief Main for testing
- */
+  /**
+   * \brief Main for testing
+   */
 int main(int argc, const char* argv[])
 {
-  // Initialization
-  Timing timer;
+    Defaults* defaults = new Defaults(argc, argv, "kc");
 
-  // Parse command line
-  Defaults* defaults = new Defaults(argc, argv, "kc");
+    GpuDevices* systemGpuDevices = new GpuDevices(defaults);
 
-  // select device based on command-line switches
-  GpuDevices* systemGpuDevices = new GpuDevices(defaults);
+    const int seed = 0;
+    DataIO* data = new DataIO;
 
-  // place for data and information about data from datafile
-  DataIO* data = new DataIO;
+    float* x = data->readData(defaults->getInputFileName().c_str());
+    int N = data->getNumElements();
+    int K = data->getNumClusters();
+    int D = data->getDimensions();
+    FLOAT_TYPE* dist = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * N); // cluster distances
+    for (int i = 0; i < N; i++) dist[i] = FLT_MAX;
+    int* centroids = (int*)malloc(sizeof(int) * K);  // centroid indices
+    memset(centroids, 0, sizeof(int) * K);
+    int* assign = (int*)malloc(sizeof(int) * N);     // assignments
+    memset(assign, seed, sizeof(int) * N);
 
+    // --> do clustering on CPU 
+    //kcentersCPU(N, K, D, x, assign, dist, centroids, seed);
 
-  const int seed = 0;
-  data = new DataIO;
-  float* x = data->readData(defaults->getInputFileName().c_str());
-  int N = data->getNumElements();
-  int K = data->getNumClusters();
-  int D = data->getDimensions();
-  FLOAT_TYPE* dist = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * N); // cluster means
-  for (int i = 0; i < N; i++) dist[i] = FLT_MAX;
-  int* centroids = (int*)malloc(sizeof(int) * K);  // centroid indices
-  memset(centroids, 0, sizeof(int) * K);
-  int* assign = (int*)malloc(sizeof(int) * N);     // assignments
-  memset(assign, seed, sizeof(int) * N);
+    // --> do clustering on GPU
+    kcentersGPU(N, K, D, x, assign, dist, centroids, seed, data);
 
-  // do clustering on GPU 
-  timer.start("kcentersGPU");
-  kcentersGPU(N, K, D, x, assign, dist, centroids, seed, data);
-  timer.stop("kcentersGPU");
+    // print results
+    FLOAT_TYPE* ctr = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * K * D); // cluster centers
+    // for each centroid
+    for (int i = 0; i < K; i++)
+        // for each dimension
+        for (int d = 0; d < D; d++)
+            // collect centroid coordinates
+            ctr[i * D + d] = x[centroids[i] * D + d];
+    data->printClusters(N, K, D, x, ctr, assign);
+    free(ctr); ctr = NULL;
 
-  // print results
-  FLOAT_TYPE* ctr = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * K * D); // cluster centers
-  // for each centroid
-  for (int i = 0; i < K; i++)
-    // for each dimension
-    for (int d = 0; d < D; d++)
-      // collect centroid coordinates
-      ctr[i * D + d] = x[centroids[i] * D + d];
-  data->printClusters(N, K, D, x, ctr, assign);
-  free(ctr); ctr = NULL;
-  // if (data->doPrintTime()) timer.report();
-  if (defaults->getTimerOutput() == true) timer.report();
+    // free memory
+    free(x);
+    free(dist);
+    free(ctr);
+    free(assign);
+    free(systemGpuDevices);
 
-  // free memory
-  free(x);
-  free(dist);
-  free(centroids);
-  free(assign);
+    // done
+    std::cout << "Done clustering" << std::endl;
 
-  // done
-  cout << "Done clustering" << endl;
-
-  return 0;
+    return 0;
 }

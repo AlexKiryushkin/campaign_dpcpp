@@ -89,8 +89,8 @@
     <ClInclude Include="dataio.h" />
     <ClInclude Include="defaults.h" />
     <ClInclude Include="gpudevices.h" />
-    <ClInclude Include="metricsCPU.h" />
-    <ClInclude Include="metricsGPU.cuh" />
+    <ClInclude Include="metrics_cpu.h" />
+    <ClInclude Include="metrics_gpu.cuh" />
     <ClInclude Include="timing.h" />
     <ClInclude Include="tokens.h" />
   </ItemGroup>

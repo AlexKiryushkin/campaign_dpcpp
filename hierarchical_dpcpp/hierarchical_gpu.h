@@ -31,7 +31,7 @@
  /* $Id$ */
 
  /**
-  * \file hierarchicalGPU.h
+  * \file hierarchical_gpu.h
   * \brief A CUDA hierarchical clustering implementation
   *
   * Implements hierarchical clustering on the GPU
@@ -57,7 +57,7 @@
 #include <cfloat>
 #include "dataio.h"
 #include "timing.h"
-#include "metricsGPU.dp.hpp"
+#include "metrics_gpu.dp.hpp"
 #include "defaults.h"
 #include "gpudevices.h"
 

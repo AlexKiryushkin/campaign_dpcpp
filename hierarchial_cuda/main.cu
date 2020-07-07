@@ -31,72 +31,103 @@
  /* $Id$ */
 
  /**
-  * \File kmedoidsGPU.cc
-  * \brief Test/example file for k-medoids clustering on the GPU
+  * \file hierarchical_gpu.cc
+  * \brief Test/example file for hierarchical clustering on the GPU
   *
-  * Test/example file for k-medoids clustering on the GPU
+  * Test/example file for hierarchical clustering on the GPU
   *
   * \author Author: Kai J. Kohlhoff, Contributors: Marc Sosnick, William Hsu
-  * \date 15/2/2010
+  * \date 2/2/2010
   * \version 1.0
   **/
+
 
 #ifdef HAVE_CONFIG_H
 #include "../config.h"
 #include "../campaign.h"
 #else
-#include "kmedoidsGPU.h"
+#include "hierarchical_gpu.h"
 #endif
 
-using namespace std;
 
-
-/**
- * \brief Main for testing
- */
+  /**
+   * \brief Main for testing
+   */
 int main(int argc, const char* argv[])
 {
   // Initialization
   Timing timer;
-  srand(2011); // fixed seed for reproducibility
 
   // Parse command line
-  Defaults* defaults = new Defaults(argc, argv, "kmed");
+  Defaults* defaults = new Defaults(argc, argv, "hier");
 
-  // select device based on command-line switches
+  // select CUDA device based on command-line switches
   GpuDevices* systemGpuDevices = new GpuDevices(defaults);
-  systemGpuDevices->setCurrentDevice(2);
+
+
   // get data and information about data from datafile
   DataIO* data = new DataIO;
 
-  FLOAT_TYPE* x = data->readData(defaults->getInputFileName().c_str()); // data points
+  FLOAT_TYPE* x = data->readData(defaults->getInputFileName().c_str());
 
   int N = data->getNumElements();
   int K = data->getNumClusters();
   int D = data->getDimensions();
-  int* medoid = (int*)malloc(sizeof(int) * K); // array with medoid indices
-  int* assign = (int*)malloc(sizeof(int) * N); // assignments
-
-  // initialize first set of medoids with first K data points  
-  for (unsigned int k = 0; k < K; k++) medoid[k] = k;
 
   // do clustering on GPU 
-  timer.start("kmedoidsGPU");
-  FLOAT_TYPE score = kmedoidsGPU(N, K, D, x, medoid, assign, 100, data);
-  timer.stop("kmedoidsGPU");
+  timer.start("hierarchicalGPU");
+  int* seq = hierarchicalGPU(N, D, x, data);
+  timer.stop("hierarchicalGPU");
 
-  // print results
-  cout << "Final set of medoids: ";
-  for (unsigned int k = 0; k < K; k++) cout << "[" << k << "] " << medoid[k] << "\t";
-  cout << endl;
-  cout << "Score: " << score << endl;
+  free(x);
+  // retrace clustering 
+  x = data->readData(defaults->getInputFileName().c_str());
+
+  int* ids = (int*)malloc(sizeof(int) * N);
+  for (int i = 0; i < N; i++) ids[i] = i;
+
+  // print all clusters (ATTENTION: only for D=1 and D=2)
+  if (D < 3)
+  {
+    FLOAT_TYPE* num1 = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * D);
+    FLOAT_TYPE* num2 = (FLOAT_TYPE*)malloc(sizeof(FLOAT_TYPE) * D);
+    unsigned int pos1, pos2, id1, id2, nextID = N - 1;
+    for (int i = 0; i < N - 1; i++)
+    {
+      nextID++;
+      id1 = seq[2 * i]; id2 = seq[2 * i + 1];
+      for (int j = 0; j < N; j++)
+      {
+        if (ids[j] == id1)
+        {
+          for (unsigned int d = 0; d < D; d++) num1[d] = x[j + d * N];
+          pos1 = j;
+        }
+        if (ids[j] == id2)
+        {
+          for (unsigned int d = 0; d < D; d++) num2[d] = x[j + d * N];
+          pos2 = j;
+        }
+      }
+      cout << id1 << "\t" << id2 << "\t(";
+      for (unsigned int d = 0; d < D; d++) cout << num1[d] << (d + 1 < D ? ", " : ") & (");
+      for (unsigned int d = 0; d < D; d++) cout << num2[d] << (d + 1 < D ? ", " : ") => (");
+      for (unsigned int d = 0; d < D; d++) cout << (num1[d] + num2[d]) / 2.0f << (d + 1 < D ? ", " : ") : ");
+      cout << nextID << endl;
+      for (unsigned int d = 0; d < D; d++)
+      {
+        x[d * N + pos1] = (x[d * N + pos1] + x[d * N + pos2]) / 2.0f;
+      }
+      ids[pos1] = nextID;
+    }
+  }
 
   if (defaults->getTimerOutput()) timer.report();
 
   // free memory
+  free(data);
   free(x);
-  free(medoid);
-  free(assign);
+  free(systemGpuDevices);
 
   // done
   cout << "Done clustering" << endl;

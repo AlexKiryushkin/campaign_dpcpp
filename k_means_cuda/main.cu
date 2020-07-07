@@ -31,7 +31,7 @@
  /* $Id$ */
 
  /**
-  * \file kmeansGPU.cc
+  * \file kmeans_gpu.cc
   * \brief Test/example file for k-means clustering on the GPU
   *
   * Test/example file for k-means clustering on the GPU
@@ -45,7 +45,7 @@
 #include "../config.h"
 #include "../campaign.h"
 #else
-#include "kmeansGPU.h"
+#include "kmeans_gpu.h"
 #endif
 using namespace std;
 

@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="kcenters.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="kcentersGPU_Intel.dp.cpp">
+    <ClCompile Include="kcenters_gpu.dp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kcentersGPU_Intel.h">
+    <ClInclude Include="kcenters_gpu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

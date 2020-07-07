@@ -69,6 +69,23 @@ int getMaxGflopsDeviceId()
   return deviceId;
 }
 
+int getAcceleratorId()
+{
+  int devicesCount = dpct::dev_mgr::instance().device_count();
+  int deviceId{ devicesCount };
+  for (int deviceIndex = 0; deviceIndex < devicesCount; ++deviceIndex)
+  {
+    auto && device = dpct::dev_mgr::instance().get_device(deviceIndex);
+    const auto deviceType = device.get_info<sycl::info::device::device_type>();
+    if (deviceType == sycl::info::device_type::accelerator)
+    {
+      deviceId = deviceIndex;
+      break;
+    }
+  }
+  return deviceId;
+}
+
 } // namespace
 
 void GpuDevices::init() {
@@ -77,6 +94,16 @@ void GpuDevices::init() {
 
   deviceCount = dpct::dev_mgr::instance().device_count();
   dpct::device_info *thisDevice;
+
+  const auto gpuDeviceId = getAcceleratorId();
+  if (gpuDeviceId == deviceCount)
+  {
+    std::cout << "No GPU was found!\n";
+  }
+  else
+  {
+    setCurrentDevice(gpuDeviceId);
+  }
 
   for (int i = 0; i < deviceCount; i++) {
     thisDevice = (dpct::device_info *)malloc(sizeof(dpct::device_info));
@@ -121,21 +148,6 @@ GpuDevices::GpuDevices(Defaults* defaults) {
     cout << "GpuDevices: defaults getlistdevices" << endl;
     printDeviceList();
     exit(0);
-  }
-
-  // if getDetectDevices, user wants the fastest device on the system 
-  // otherwise the user has specified the device to be used
-  if (defaults->getDetectDevice() == true) {
-    if (setCurrentDevice(getMaxGflopsDeviceId()) == GPUDEVICES_FAILURE) {
-      cout << "Error: could not select device " << defaults->getDevice() << endl;
-      exit(1);
-    }
-  }
-  else {
-    if (setCurrentDevice(defaults->getDevice()) == GPUDEVICES_FAILURE) {
-      cout << "Error: could not select device " << defaults->getDevice() << endl;
-      exit(1);
-    }
   }
 }
 

@@ -30,8 +30,8 @@
 
  /* $Id$ */
  /**
-  * \file metricsGPU.h
-  * \brief Distance calculation on GPU.
+  * \file metrics_gpu.h
+  * \brief Distance calculation onGPU.
   *
   * \author Author: Kai J. Kohlhoff, Contributors: Marc Sosnick, William Hsu
   * \date 5/26/10

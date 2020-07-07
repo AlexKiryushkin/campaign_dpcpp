@@ -1,51 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Headers">
+    <Filter Include="Header Files">
       <UniqueIdentifier>{b1ad2a8f-558d-477d-b3cf-e2704ae6421d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources">
+    <Filter Include="Source Files">
       <UniqueIdentifier>{c1b2df8f-a127-4c8d-bf4c-e11ed24d3248}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataio.h">
-      <Filter>Headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="defaults.h">
-      <Filter>Headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gpudevices.h">
-      <Filter>Headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tokens.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="metricsCPU.h">
-      <Filter>Headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="timing.h">
-      <Filter>Headers</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="metricsGPU.cuh">
-      <Filter>Headers</Filter>
+    <ClInclude Include="metrics_cpu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metrics_gpu.cuh">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tokens.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dataio.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="defaults.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gpudevices.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="timing.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

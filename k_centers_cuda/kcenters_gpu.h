@@ -30,7 +30,7 @@
 
  /* $Id$ */
  /**
-  * \file kcentersGPU.h
+  * \file kcenters_gpu.h
   * \brief A CUDA K-centers implementation
   *
   * Implements parallel K-centers clustering on the GPU
@@ -48,22 +48,22 @@
   // defined globally in campaign.h
   // define distance metric, e.g. CAMPAIGN_DISTANCE_MANHATTAN, CAMPAIGN_DISTANCE_EUCLIDEAN_, etc.
 #define CAMPAIGN_DISTANCE_EUCLIDEAN_SQUARED /** < Type of distance metric */
-#define THREADSPERBLOCK 128 /** < Threads per block (tpb) */
+#define THREADSPERBLOCK 512 /** < Threads per block (tpb) */
 #define FLOAT_TYPE float         /** < Precision of floating point numbers */
 
 #undef _GLIBCXX_ATOMIC_BUILTINS
 
-#include <CL/sycl.hpp>
-#include <dpct/dpct.hpp>
 #include <iostream>
 #include <cfloat>
-#include "../utils_dpcpp/dataio.h"
-#include "../utils_dpcpp/defaults.h"
-#include "../utils_dpcpp/metricsGPU.dp.hpp"
+#include "../utils/dataio.h"
+#include "../utils/timing.h"
+#include "../utils/defaults.h"
+#include "../utils/metrics_gpu.cuh"
+#include "../utils/gpudevices.h"
 #endif
 
 
-//using namespace std;
+using namespace std;
 
 /**
  * \brief Parallel algorithm, finds maximum value in first array and key for that value in second array
@@ -77,8 +77,8 @@
  * \return Maximum value at first position of s_A and corresponding key at first postion of s_B
  */
 template <unsigned int BLOCKSIZE, class T, class U>
-/* DPCT_ORIG __device__ static void parallelMax(int tid, T *s_A, U *s_B);*/
-static void parallelMax(int tid, T* s_A, U* s_B, sycl::nd_item<3> item_ct1);
+__device__ static void parallelMax(int tid, T* s_A, U* s_B);
+
 
 /**
  * \brief Checks if data points have to be reassigned to current centroid
@@ -97,16 +97,11 @@ static void parallelMax(int tid, T* s_A, U* s_B, sycl::nd_item<3> item_ct1);
  * \param MAXID Index of data point furthes away  from its centroid for each block
  * \return Updated values of DIST, ASSIGN, MAXDIST, and MAXID
  **/
- /* DPCT_ORIG __global__ void checkCentroid_CUDA(int N, int D, int iter, int
-  * centroid, FLOAT_TYPE *X, FLOAT_TYPE *CTR, FLOAT_TYPE *DIST, int *ASSIGN,
-  * FLOAT_TYPE *MAXDIST, int *MAXID);*/
-void checkCentroid_sycl(int N, int D, int iter, int centroid, FLOAT_TYPE* X,
-    FLOAT_TYPE* CTR, FLOAT_TYPE* DIST, int* ASSIGN,
-    FLOAT_TYPE* MAXDIST, int* MAXID,
-    sycl::nd_item<3> item_ct1, uint8_t* dpct_local);
+__global__ void checkCentroid_CUDA(int N, int D, int iter, int centroid, FLOAT_TYPE* X, FLOAT_TYPE* CTR, FLOAT_TYPE* DIST, int* ASSIGN, FLOAT_TYPE* MAXDIST, int* MAXID);
+
 
 /**
- * \brief Runs k-centers on the GPU. Requires CUDA-enabled graphics processor
+ * \brief Runs k-centers on theGPU. Requires CUDA-enabled graphics processor
  * Note: distances should all be FLT_MAX the first time this method is called
  * Runtime O(D*K*N)
  *

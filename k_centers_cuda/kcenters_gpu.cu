@@ -31,7 +31,7 @@
 /* $Id$ */
 
 /**
- * \file kcentersGPU.cu
+ * \file kcenters_gpu.cu
  * \brief A CUDA K-centers implementation
  *
  * Implements parallel K-centers clustering on the GPU
@@ -41,7 +41,7 @@
  * \version 1.0
  **/
 
-#include "kcentersGPU.h"
+#include "kcenters_gpu.h"
 
 using namespace std;
 

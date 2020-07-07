@@ -31,7 +31,7 @@
 /* $Id$ */
 
 /**
- * \file hierarchicalGPU.cu
+ * \file hierarchical_gpu.cu
  * \brief A CUDA hierarchical clustering implementation
  *
  * Implements hierarchical clustering on the GPU
@@ -45,7 +45,7 @@
 #include "../config.h"
 #include "../campaign.h"
 #else
-#include "hierarchicalGPU.h"
+#include "hierarchical_gpu.h"
 #endif
 
 using namespace std;

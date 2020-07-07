@@ -31,7 +31,7 @@
  /* $Id$ */
 
  /**
-  * \File kmeansGPU.h
+  * \File kmeans_gpu.h
   * \brief A basic CUDA K-means implementation
   *
   * A module of the CAMPAIGN data clustering library for parallel architectures
@@ -55,7 +55,7 @@
 #include "dataio.h"
 #include "timing.h"
 #include "defaults.h"
-#include "metricsGPU.dp.hpp"
+#include "metrics_gpu.dp.hpp"
 #include "gpudevices.h"
 
 #else
@@ -148,7 +148,7 @@ static void calcCentroids_CUDA(int N, int D, FLOAT_TYPE* X, FLOAT_TYPE* CTR, int
 
 
 /**
- * \brief Runs K-means on the GPU. Requires CUDA-enabled graphics processor
+ * \brief Runs K-means on theGPU. Requires CUDA-enabled graphics processor
  *
  * \param N Number of data points
  * \param K Number of clusters
