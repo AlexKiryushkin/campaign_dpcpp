@@ -11,20 +11,51 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils_dpcpp", "utils_dpcpp\utils_dpcpp.vcxproj", "{657E84F6-2F18-4F05-A44A-8924C0DD38F5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_dpcpp", "hierarchical_dpcpp\hierarchial_dpcpp.vcxproj", "{973A8D57-3056-483E-A011-590B538E05F9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_means_dpcpp", "k_means_dpcpp\k_means_dpcpp.vcxproj", "{73CE7D83-5843-4C13-A125-CDBAEC91FF2E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_centers_cuda", "k_centers_cuda\kcenters.vcxproj", "{1DC33695-77E2-40CF-B33E-91ED52F976B8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_means_cuda", "k_means_cuda\k_means.vcxproj", "{CD443F73-CEE6-4B60-92C4-977E43768E06}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_medoids_cuda", "k_medoids_cuda\kmedoids.vcxproj", "{13605A7A-7FFA-48EE-9533-2D2F6F45DA22}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utils", "utils\utils_cuda.vcxproj", "{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "k_medoids_dpcpp", "k_medoids_dpcpp\kmedoids_dpcpp.vcxproj", "{0349D724-A89F-47BC-9576-0ACC3D147EB3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hierarchial_cuda", "hierarchial_cuda\hierarchial.vcxproj", "{328B60BF-4893-423A-958F-2A767A885832}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rmsd_cuda", "rmsd_cuda\rmsd.vcxproj", "{C08A2017-D4BD-4410-9E45-5D773B200C33}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kpsmeans_cuda", "kpsmeans_cuda\kpsmeans.vcxproj", "{0E037442-718A-4955-BA5C-EC5DBACAE8C0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +103,14 @@ Global
 		{328B60BF-4893-423A-958F-2A767A885832}.Debug|x64.Build.0 = Debug|x64
 		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.ActiveCfg = Release|x64
 		{328B60BF-4893-423A-958F-2A767A885832}.Release|x64.Build.0 = Release|x64
+		{C08A2017-D4BD-4410-9E45-5D773B200C33}.Debug|x64.ActiveCfg = Debug|x64
+		{C08A2017-D4BD-4410-9E45-5D773B200C33}.Debug|x64.Build.0 = Debug|x64
+		{C08A2017-D4BD-4410-9E45-5D773B200C33}.Release|x64.ActiveCfg = Release|x64
+		{C08A2017-D4BD-4410-9E45-5D773B200C33}.Release|x64.Build.0 = Release|x64
+		{0E037442-718A-4955-BA5C-EC5DBACAE8C0}.Debug|x64.ActiveCfg = Debug|x64
+		{0E037442-718A-4955-BA5C-EC5DBACAE8C0}.Debug|x64.Build.0 = Debug|x64
+		{0E037442-718A-4955-BA5C-EC5DBACAE8C0}.Release|x64.ActiveCfg = Release|x64
+		{0E037442-718A-4955-BA5C-EC5DBACAE8C0}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

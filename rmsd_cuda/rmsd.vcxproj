@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{328B60BF-4893-423A-958F-2A767A885832}</ProjectGuid>
-    <RootNamespace>hierarchial</RootNamespace>
-    <ProjectName>hierarchial_cuda</ProjectName>
+    <ProjectGuid>{C08A2017-D4BD-4410-9E45-5D773B200C33}</ProjectGuid>
+    <RootNamespace>rmsd</RootNamespace>
+    <ProjectName>rmsd_cuda</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -80,13 +80,11 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="hierarchical_gpu.cu" />
     <CudaCompile Include="main.cu" />
-    <CudaCompile Include="min.cu" />
+    <CudaCompile Include="rmsd_gpu.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hierarchical_gpu.h" />
-    <ClInclude Include="min.h" />
+    <ClInclude Include="rmsd_gpu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

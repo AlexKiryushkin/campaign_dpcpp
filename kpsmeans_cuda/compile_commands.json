@@ -1,0 +1,12 @@
+[
+    {
+        "file":"kernel.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"kernel.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/kpsmeans"
+    },
+    {
+        "file":"kpsmeansGPU.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"kpsmeansGPU.cu\"",
+        "directory":"D:/dev/campaign_dpcpp/kpsmeans"
+    }
+]
