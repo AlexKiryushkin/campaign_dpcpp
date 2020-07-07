@@ -71,19 +71,26 @@ int getMaxGflopsDeviceId()
 
 int getAcceleratorId()
 {
-  int devicesCount = dpct::dev_mgr::instance().device_count();
-  int deviceId{ devicesCount };
-  for (int deviceIndex = 0; deviceIndex < devicesCount; ++deviceIndex)
-  {
-    auto && device = dpct::dev_mgr::instance().get_device(deviceIndex);
-    const auto deviceType = device.get_info<sycl::info::device::device_type>();
-    if (deviceType == sycl::info::device_type::accelerator)
+    int devicesCount = dpct::dev_mgr::instance().device_count();
+    int deviceId{ devicesCount };
+    for (int deviceIndex = 0; deviceIndex < devicesCount; ++deviceIndex)
     {
-      deviceId = deviceIndex;
-      break;
+        auto&& device = dpct::dev_mgr::instance().get_device(deviceIndex);
+        const auto deviceType = device.get_info<sycl::info::device::device_type>();
+        cout << "Device " << deviceIndex << " [type " << (int)deviceType << "]: " << device.get_info<sycl::info::device::name>() << endl;
     }
-  }
-  return deviceId;
+    for (int deviceIndex = 0; deviceIndex < devicesCount; ++deviceIndex)
+    {
+        auto&& device = dpct::dev_mgr::instance().get_device(deviceIndex);
+        const auto deviceType = device.get_info<sycl::info::device::device_type>();
+        if (deviceType == sycl::info::device_type::gpu)
+        {
+            cout << "Selected device: " << deviceIndex << endl;
+            deviceId = deviceIndex;
+            break;
+        }
+    }
+    return deviceId;
 }
 
 } // namespace
