@@ -138,6 +138,54 @@ public:
     return retVal;
   }
 
+  /**
+     * \brief Allocates uninitialized device memory
+     * \param memSize Size of memory to be allocated in bytes
+     * \return Memory pointer
+     */
+  template <typename T>
+  T allocDeviceMemory(int memSize)
+  {
+      T retVal;
+      retVal = (T)sycl::malloc_device(memSize, dpct::get_default_queue());
+      return retVal;
+  }
+
+  /**
+     * \brief Allocates device memory and copies values from host memory into it
+     * \param memSize Size of memory to be allocated in bytes
+     * \param data Host data of size memSize to be copied to allocated memory
+     * \return Memory pointer
+     */
+  template <typename T>
+  T allocDeviceMemory(int memSize, T data)
+  {
+      dpct::device_ext& dev_ct1 = dpct::get_current_device();
+      sycl::queue& q_ct1 = dev_ct1.default_queue();
+      T retVal;
+      retVal = (T)sycl::malloc_device(memSize, q_ct1);
+      q_ct1.memcpy(retVal, data, memSize)
+          .wait(); // copy data from host to device
+      return retVal;
+  }
+
+  /**
+   * \brief Allocates device memory and initializes it with zeroes
+   * \param memSize Size of memory to be allocated in bytes
+   * \return Memory pointer
+   */
+  template <typename T>
+  T allocZeroedDeviceMemory(int memSize)
+  {
+      dpct::device_ext& dev_ct1 = dpct::get_current_device();
+      sycl::queue& q_ct1 = dev_ct1.default_queue();
+      T retVal;
+      retVal = (T)sycl::malloc_device(memSize, q_ct1);
+      q_ct1.memset(retVal, 0, memSize).wait();
+      return retVal;
+  }
+
+
 private:
   Internal* ip;
 };
