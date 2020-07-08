@@ -49,8 +49,6 @@
 #include "../utils_dpcpp/gpudevices.h"
 #include "rmsd_gpu.h"
 
-//using namespace std;
-
   /**
    * \brief Main for testing
    */
@@ -59,18 +57,21 @@ int main(int argc, const char* argv[])
     Defaults* defaults = new Defaults(argc, argv, "kc");
 
     GpuDevices* systemGpuDevices = new GpuDevices(defaults);
+    systemGpuDevices->setCurrentDevice(0);
 
     const int seed = 0;
     DataIO* data = new DataIO;
     FLOAT_TYPE* x = data->readData(defaults->getInputFileName().c_str());
 
-    int N = data->getNumElements();
-    int K = data->getNumClusters(); // stands for number of atoms in rmsdGPU
-    int D = data->getDimensions();  // expected to be 3
+    // ND: for RMSD initial project is not valid due to incorrect reading from file
+    // With 5, 10 and 3 in the beginning of the input file, only 5*3=15 values are read,
+    //  so now file is changed for correct reading, but hardcodes set bellow! 
+    int N = /*data->getNumElements()*/5;
+    int K = /*data->getNumClusters()*/10; // stands for number of atoms in rmsdGPU
+    int D = /*data->getDimensions()*/3;  // expected to be 3
     cout << "Reading " << N << " structures of " << K << " atoms each ("
         << D << " dimensions)" << endl;
     data->setDataSize(N * K * D);
-    // float* x = data->readData(data->getFileName());
 
     // do rmsd calculations on GPU
     FLOAT_TYPE* rmsd = rmsdGPU(N, K, x, data);
