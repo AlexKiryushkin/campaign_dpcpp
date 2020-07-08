@@ -85,7 +85,6 @@ int getAcceleratorId()
         const auto deviceType = device.get_info<sycl::info::device::device_type>();
         if (deviceType == sycl::info::device_type::gpu)
         {
-            cout << "Selected device: " << deviceIndex << endl;
             deviceId = deviceIndex;
             break;
         }
@@ -176,6 +175,7 @@ int GpuDevices::setCurrentDevice(int device) {
 
   if (device < deviceCount) {
     dpct::dev_mgr::instance().select_device(device);
+    cout << "Selected device: " << device << endl;
     return GPUDEVICES_SUCCESS;
   }
   else {
