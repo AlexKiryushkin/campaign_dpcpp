@@ -45,7 +45,7 @@
 // defined globally in campaign.h
 // define distance metric, e.g. CAMPAIGN_DISTANCE_MANHATTAN, CAMPAIGN_DISTANCE_EUCLIDEAN_, etc.
 #define CAMPAIGN_DISTANCE_MANHATTAN /** < Type of distance metric */
-#define THREADSPERBLOCK 256         /** < Threads per block (tpb) */
+#define THREADSPERBLOCK 128         /** < Threads per block (tpb) */
 #define FLOAT_TYPE float            /** < Precision of floating point numbers */
 
 #include <iostream>
