@@ -1,0 +1,12 @@
+[
+    {
+        "file":"somGPUMain.cc",
+        "command":"ClCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"somGPUMain.cc\"",
+        "directory":"D:/oneAPI/campaign_dpcpp_original/campaign_dpcpp_draft/som_cuda"
+    },
+    {
+        "file":"somGPU.cu",
+        "command":"CudaCompile -m64 -DNDEBUG -DWIN32 -DWIN64 -D_CONSOLE -D_DEBUG \"somGPU.cu\"",
+        "directory":"D:/oneAPI/campaign_dpcpp_original/campaign_dpcpp_draft/som_cuda"
+    }
+]
