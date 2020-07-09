@@ -80,6 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ONEAPI_ROOT)dpcpp-ct\latest\include;$(oneTBBProductDir)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Migrated">
     <FromCUProjectDir>D:\oneAPI\campaign_dpcpp_original\campaign_dpcpp_draft\som_cuda</FromCUProjectDir>
@@ -141,6 +142,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>utils_dpcpp.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

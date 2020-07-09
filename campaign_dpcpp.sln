@@ -58,8 +58,24 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kpsmeans_cuda", "kpsmeans_c
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rmsd_dpcpp", "rmsd_dpcpp\rmsd_dpcpp.vcxproj", "{038B5905-CAAD-4E48-90E5-2187663CE700}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kpsmeans_dpcpp", "kpsmeans_dpcpp\kpsmeans_dpcpp.vcxproj", "{9166A022-8976-4534-B03F-4D1D4DD235BA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "som_cuda", "som_cuda\som_cuda.vcxproj", "{6C2EABFA-6539-4FBD-A270-BDAD65B4A868}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F5A44F2-5A97-4290-BBD6-19E1EB2E8473} = {1F5A44F2-5A97-4290-BBD6-19E1EB2E8473}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "som_dpcpp", "som_dpcpp\som_dpcpp.vcxproj", "{41FB02DA-CA36-4C87-A5BA-3D049240306B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{657E84F6-2F18-4F05-A44A-8924C0DD38F5} = {657E84F6-2F18-4F05-A44A-8924C0DD38F5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +139,14 @@ Global
 		{9166A022-8976-4534-B03F-4D1D4DD235BA}.Debug|x64.Build.0 = Debug|x64
 		{9166A022-8976-4534-B03F-4D1D4DD235BA}.Release|x64.ActiveCfg = Release|x64
 		{9166A022-8976-4534-B03F-4D1D4DD235BA}.Release|x64.Build.0 = Release|x64
+		{6C2EABFA-6539-4FBD-A270-BDAD65B4A868}.Debug|x64.ActiveCfg = Debug|x64
+		{6C2EABFA-6539-4FBD-A270-BDAD65B4A868}.Debug|x64.Build.0 = Debug|x64
+		{6C2EABFA-6539-4FBD-A270-BDAD65B4A868}.Release|x64.ActiveCfg = Release|x64
+		{6C2EABFA-6539-4FBD-A270-BDAD65B4A868}.Release|x64.Build.0 = Release|x64
+		{41FB02DA-CA36-4C87-A5BA-3D049240306B}.Debug|x64.ActiveCfg = Debug|x64
+		{41FB02DA-CA36-4C87-A5BA-3D049240306B}.Debug|x64.Build.0 = Debug|x64
+		{41FB02DA-CA36-4C87-A5BA-3D049240306B}.Release|x64.ActiveCfg = Release|x64
+		{41FB02DA-CA36-4C87-A5BA-3D049240306B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
